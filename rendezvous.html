@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>Eco Nettoyage 85 · Prendre Rendez-vous | Nettoyage Écologique Vendée</title>
+  
+  <!-- META TAGS AMÉLIORÉES -->
+  <meta name="description" content="Prenez rendez-vous en ligne avec Eco Nettoyage 85 pour un nettoyage écologique en Vendée, La Rochelle et Niort. Choix du service, date et heure disponibles. Confirmation immédiate par WhatsApp.">
+  <meta name="keywords" content="rendez-vous nettoyage, réservation en ligne, nettoyage écologique vendée, booking nettoyage, prise de rdv">
+  <meta name="author" content="Eco Nettoyage 85">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.eco-nettoyage85.fr/rendezvous.html">
+  <meta name="theme-color" content="#1B4D3E">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.eco-nettoyage85.fr/rendezvous.html">
+  <meta property="og:title" content="Prendre Rendez-vous - Eco Nettoyage 85">
+  <meta property="og:description" content="Réservez votre intervention de nettoyage écologique en ligne">
+  <meta property="og:image" content="https://www.eco-nettoyage85.fr/img/og-booking.jpg">
+  
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Flatpickr for date picking (lightweight and professional) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- html2pdf for PDF generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
+  <style>
+    /* =====================================================
+       RENDEZ-VOUS PAGE - PROFESSIONAL BOOKING SYSTEM
+       DEVELOPER: S-TECH DIGITAL INK
+       DATE: 2026
+       EASY TO UPDATE SCHEDULE - COMMENTS INCLUDED
+       ===================================================== */
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --primary-deep: #1B4D3E;
+      --primary-sage: #8AA89F;
+      --primary-sand: #E8CAA4;
+      --primary-gold: #D4AF37;
+      --primary-charcoal: #2C3E3D;
+      --primary-white: #FFFFFF;
+      --primary-offwhite: #F9F7F4;
+      --primary-gray: #E5E5E5;
+      --primary-dark: #1A2E2A;
+      --shadow-sm: 0 5px 15px rgba(0,0,0,0.05);
+      --shadow-md: 0 10px 25px rgba(0,0,0,0.1);
+      --shadow-lg: 0 20px 40px rgba(0,0,0,0.15);
+      --gradient-primary: linear-gradient(135deg, #1B4D3E 0%, #2C5A4B 100%);
+      --gradient-gold: linear-gradient(135deg, #D4AF37 0%, #E8CAA4 100%);
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--primary-offwhite);
+      color: var(--primary-charcoal);
+      line-height: 1.6;
+    }
+    
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      color: var(--primary-deep);
+    }
+    
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 3rem;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 1.5rem;
+      }
+    }
+    
+    /* ========== HEADER ========== */
+    .booking-header {
+      background: var(--gradient-primary);
+      padding: 1.5rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-md);
+    }
+    
+    .booking-header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .booking-logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--primary-gold);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: rotate(45deg);
+      transition: transform 0.3s ease;
+    }
+    
+    .logo-icon i {
+      transform: rotate(-45deg);
+      font-size: 1.8rem;
+      color: var(--primary-deep);
+    }
+    
+    .logo-text {
+      color: white;
+      font-size: 1.8rem;
+      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .logo-text span {
+      color: var(--primary-gold);
+    }
+    
+    .back-home {
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+      padding: 0.8rem 1.5rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50px;
+      transition: all 0.3s ease;
+    }
+    
+    .back-home:hover {
+      background: var(--primary-gold);
+      color: var(--primary-deep);
+    }
+    
+    /* ========== MAIN BOOKING SECTION ========== */
+    .booking-main {
+      padding: 4rem 0;
+    }
+    
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    
+    @media (max-width: 992px) {
+      .booking-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    /* ========== BOOKING FORM ========== */
+    .booking-form-container {
+      background: white;
+      border-radius: 40px;
+      padding: 3rem;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .booking-form-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: var(--gradient-gold);
+    }
+    
+    .form-title {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .form-subtitle {
+      color: var(--primary-sage);
+      margin-bottom: 2.5rem;
+      font-size: 1.1rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1.8rem;
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    
+    @media (max-width: 576px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--primary-deep);
+      font-size: 0.95rem;
+    }
+    
+    label i {
+      color: var(--primary-gold);
+      margin-right: 0.5rem;
+    }
+    
+    .required::after {
+      content: '*';
+      color: #e74c3c;
+      margin-left: 4px;
+    }
+    
+    input, select, textarea {
+      width: 100%;
+      padding: 1rem 1.2rem;
+      border: 2px solid transparent;
+      border-radius: 15px;
+      background: var(--primary-offwhite);
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary-gold);
+      background: white;
+      box-shadow: 0 5px 20px rgba(212,175,55,0.1);
+    }
+    
+    input.error, select.error, textarea.error {
+      border-color: #e74c3c;
+    }
+    
+    .error-message {
+      color: #e74c3c;
+      font-size: 0.85rem;
+      margin-top: 0.3rem;
+      display: none;
+    }
+    
+    .error-message.show {
+      display: block;
+    }
+    
+    /* ========== FILE UPLOAD CUSTOM ========== */
+    .file-upload {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 2rem;
+      background: var(--primary-offwhite);
+      border: 2px dashed var(--primary-sage);
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .file-upload:hover {
+      border-color: var(--primary-gold);
+      background: rgba(212,175,55,0.05);
+    }
+    
+    .file-upload i {
+      font-size: 3rem;
+      color: var(--primary-gold);
+      margin-bottom: 1rem;
+    }
+    
+    .file-upload p {
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    
+    .file-upload small {
+      color: var(--primary-sage);
+      font-size: 0.85rem;
+    }
+    
+    .file-upload input[type="file"] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+    
+    .file-preview {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .file-preview-item {
+      background: var(--primary-offwhite);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+    }
+    
+    .file-preview-item i {
+      color: var(--primary-gold);
+    }
+    
+    .file-preview-item button {
+      background: none;
+      border: none;
+      color: #e74c3c;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-left: 0.5rem;
+    }
+    
+    /* ========== AVAILABLE TIMES ========== */
+    .available-times-section {
+      background: white;
+      border-radius: 40px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .times-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .times-header i {
+      font-size: 2rem;
+      color: var(--primary-gold);
+    }
+    
+    .times-header h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.2rem;
+    }
+    
+    .times-header p {
+      color: var(--primary-sage);
+    }
+    
+    /* =====================================================
+       EASY TO UPDATE SCHEDULE - MODIFY THESE ARRAYS
+       Just update the times in the JavaScript section below
+       ===================================================== */
+    
+    .days-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .day-card {
+      background: var(--primary-offwhite);
+      border-radius: 20px;
+      padding: 1.2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .day-card.active {
+      background: var(--gradient-primary);
+      color: white;
+    }
+    
+    .day-card.active .day-name,
+    .day-card.active .day-date {
+      color: white;
+    }
+    
+    .day-card.active .time-slot {
+      background: rgba(255,255,255,0.2);
+      color: white;
+    }
+    
+    .day-card.active .time-slot:hover,
+    .day-card.active .time-slot.selected {
+      background: var(--primary-gold);
+      color: var(--primary-deep);
+    }
+    
+    .day-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    
+    .day-name {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--primary-deep);
+    }
+    
+    .day-date {
+      color: var(--primary-sage);
+      font-size: 0.95rem;
+    }
+    
+    .time-slots {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+    
+    .time-slot {
+      padding: 0.5rem 1.2rem;
+      background: white;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+    }
+    
+    .time-slot:hover {
+      background: var(--primary-gold);
+      color: var(--primary-deep);
+      transform: translateY(-2px);
+    }
+    
+    .time-slot.selected {
+      background: var(--primary-gold);
+      color: var(--primary-deep);
+      border-color: var(--primary-deep);
+    }
+    
+    .time-slot.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      background: var(--primary-gray);
+    }
+    
+    .time-slot.disabled:hover {
+      background: var(--primary-gray);
+      transform: none;
+    }
+    
+    .no-slots {
+      color: var(--primary-sage);
+      font-style: italic;
+      padding: 0.5rem 0;
+    }
+    
+    .booking-info-card {
+      background: var(--gradient-sage);
+      border-radius: 20px;
+      padding: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .booking-info-card h3 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+    
+    .booking-info-card ul {
+      list-style: none;
+    }
+    
+    .booking-info-card li {
+      padding: 0.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .booking-info-card li i {
+      color: var(--primary-gold);
+    }
+    
+    /* ========== SUBMIT BUTTON ========== */
+    .submit-btn {
+      width: 100%;
+      padding: 1.2rem;
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .submit-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+    
+    .submit-btn:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+    
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .submit-btn i {
+      font-size: 1.3rem;
+    }
+    
+    /* ========== PDF TEMPLATE (HIDDEN) ========== */
+    .pdf-template {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+    }
+    
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      .booking-form-container {
+        padding: 2rem 1.5rem;
+      }
+      
+      .form-title {
+        font-size: 2rem;
+      }
+      
+      .times-header h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ========== HEADER ========== -->
+  <header class="booking-header">
+    <div class="container">
+      <div class="booking-logo">
+        <div class="logo-icon">
+          <i class="fas fa-leaf"></i>
+        </div>
+        <div class="logo-text">Eco<span>Nettoyage85</span></div>
+      </div>
+      <a href="index.html" class="back-home">
+        <i class="fas fa-arrow-left"></i> Retour à l'accueil
+      </a>
+    </div>
+  </header>
+
+  <!-- ========== MAIN BOOKING SECTION ========== -->
+  <main class="booking-main">
+    <div class="container">
+      <h1 data-aos="fade-down" style="font-size: 2.8rem; margin-bottom: 0.5rem;">Prendre rendez-vous</h1>
+      <p data-aos="fade-down" data-aos-delay="50" style="font-size: 1.2rem; color: var(--primary-sage); margin-bottom: 3rem;">
+        Choisissez votre service, sélectionnez un créneau et recevez votre confirmation par WhatsApp
+      </p>
+      
+      <div class="booking-grid">
+        <!-- LEFT COLUMN: BOOKING FORM -->
+        <div class="booking-form-container" data-aos="fade-right">
+          <h2 class="form-title">Informations de réservation</h2>
+          <p class="form-subtitle">Tous les champs marqués d'un * sont obligatoires</p>
+          
+          <form id="bookingForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label><i class="fas fa-user"></i> Prénom <span class="required"></span></label>
+                <input type="text" id="firstName" placeholder="Votre prénom" required>
+                <div class="error-message" id="firstNameError">Le prénom est requis</div>
+              </div>
+              
+              <div class="form-group">
+                <label><i class="fas fa-user"></i> Nom <span class="required"></span></label>
+                <input type="text" id="lastName" placeholder="Votre nom" required>
+                <div class="error-message" id="lastNameError">Le nom est requis</div>
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label><i class="fas fa-phone"></i> Téléphone <span class="required"></span></label>
+                <input type="tel" id="phone" placeholder="06 XX XX XX XX" required>
+                <div class="error-message" id="phoneError">Numéro de téléphone requis</div>
+              </div>
+              
+              <div class="form-group">
+                <label><i class="fas fa-envelope"></i> Email</label>
+                <input type="email" id="email" placeholder="votre@email.com">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label><i class="fas fa-map-marker-alt"></i> Adresse complète <span class="required"></span></label>
+              <input type="text" id="address" placeholder="Numéro, rue, code postal, ville" required>
+              <div class="error-message" id="addressError">L'adresse est requise</div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label><i class="fas fa-concierge-bell"></i> Service souhaité <span class="required"></span></label>
+                <select id="service" required>
+                  <option value="" disabled selected>-- Choisissez un service --</option>
+                  <option value="Nettoyage de vitres">Nettoyage de vitres</option>
+                  <option value="Nettoyage de terrasse">Nettoyage de terrasse / balcon</option>
+                  <option value="Nettoyage de voiture">Nettoyage de voiture (intérieur/extérieur)</option>
+                  <option value="Nettoyage Airbnb">Nettoyage Airbnb / location saisonnière</option>
+                  <option value="Nettoyage maison">Nettoyage maison / appartement</option>
+                  <option value="Nettoyage bureaux">Nettoyage bureaux / locaux professionnels</option>
+                  <option value="Nettoyage canapé">Nettoyage canapé / tapis</option>
+                  <option value="Autre">Autre (précisez dans commentaires)</option>
+                </select>
+                <div class="error-message" id="serviceError">Veuillez sélectionner un service</div>
+              </div>
+              
+              <div class="form-group">
+                <label><i class="fas fa-clock"></i> Heure sélectionnée <span class="required"></span></label>
+                <input type="text" id="selectedTime" placeholder="Sélectionnez un créneau à droite" readonly required style="background: #f0f0f0;">
+                <div class="error-message" id="timeError">Veuillez sélectionner un créneau</div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label><i class="fas fa-camera"></i> Photo du lieu (optionnel)</label>
+              <div class="file-upload" id="fileUpload">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>Cliquez ou glissez une photo</p>
+                <small>PNG, JPG jusqu'à 10 Mo</small>
+                <input type="file" id="imageUpload" accept="image/*" multiple>
+              </div>
+              <div class="file-preview" id="filePreview"></div>
+            </div>
+            
+            <div class="form-group">
+              <label><i class="fas fa-comment"></i> Commentaires / précisions</label>
+              <textarea id="comments" rows="3" placeholder="Informations complémentaires..."></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn" id="submitBtn">
+              <i class="fab fa-whatsapp"></i> Confirmer et envoyer sur WhatsApp
+            </button>
+          </form>
+        </div>
+        
+        <!-- RIGHT COLUMN: AVAILABLE TIMES -->
+        <div class="available-times-section" data-aos="fade-left">
+          <div class="times-header">
+            <i class="fas fa-calendar-alt"></i>
+            <div>
+              <h2>Créneaux disponibles</h2>
+              <p>Sélectionnez votre jour et heure</p>
+            </div>
+          </div>
+          
+          <!-- =====================================================
+               DYNAMIC TIME SLOTS - GENERATED BY JAVASCRIPT
+               TO UPDATE SCHEDULE: MODIFY THE 'timeSlots' OBJECT
+               IN THE JAVASCRIPT SECTION BELOW
+               ===================================================== -->
+          <div class="days-grid" id="daysGrid">
+            <!-- Will be populated by JavaScript -->
+          </div>
+          
+          <div class="booking-info-card">
+            <h3><i class="fas fa-info-circle"></i> Informations</h3>
+            <ul>
+              <li><i class="fas fa-check-circle"></i> Intervention 7j/7 de 8h à 20h</li>
+              <li><i class="fas fa-check-circle"></i> Confirmation immédiate par WhatsApp</li>
+              <li><i class="fas fa-check-circle"></i> Annulation gratuite jusqu'à 2h avant</li>
+              <li><i class="fas fa-check-circle"></i> Devis inclus dans la confirmation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ========== PDF TEMPLATE (HIDDEN) ========== -->
+  <div class="pdf-template" id="pdfTemplate">
+    <div style="font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 30px; background: white;">
+      <!-- Header -->
+      <div style="text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 3px solid #D4AF37;">
+        <h1 style="color: #1B4D3E; font-size: 32px; margin: 0;">Eco Nettoyage 85</h1>
+        <p style="color: #8AA89F; font-size: 18px;">Confirmation de rendez-vous</p>
+      </div>
+      
+      <!-- Reference -->
+      <div style="background: #F9F7F4; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+        <p style="margin: 0; font-size: 14px; color: #2C3E3D;">N° de réservation: <span id="pdfRef">EN85-2026-001</span></p>
+        <p style="margin: 5px 0 0; font-size: 14px; color: #2C3E3D;">Date: <span id="pdfDate">17/02/2026</span></p>
+      </div>
+      
+      <!-- Client Info -->
+      <div style="margin-bottom: 30px;">
+        <h2 style="color: #1B4D3E; font-size: 22px; margin-bottom: 15px;">Informations client</h2>
+        <table style="width: 100%; border-collapse: collapse;">
+          <tr>
+            <td style="padding: 10px; border: 1px solid #E5E5E5; font-weight: bold;">Nom complet:</td>
+            <td style="padding: 10px; border: 1px solid #E5E5E5;" id="pdfName">John Doe</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border: 1px solid #E5E5E5; font-weight: bold;">Téléphone:</td>
+            <td style="padding: 10px; border: 1px solid #E5E5E5;" id="pdfPhone">06 XX XX XX XX</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border: 1px solid #E5E5E5; font-weight: bold;">Email:</td>
+            <td style="padding: 10px; border: 1px solid #E5E5E5;" id="pdfEmail">Non renseigné</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border: 1px solid #E5E5E5; font-weight: bold;">Adresse:</td>
+            <td style="padding: 10px; border: 1px solid #E5E5E5;" id="pdfAddress">Adresse complète</td>
+          </tr>
+        </table>
+      </div>
+      
+      <!-- Appointment Details -->
+      <div style="margin-bottom: 30px;">
+        <h2 style="color: #1B4D3E; font-size: 22px; margin-bottom: 15px;">Détails du rendez-vous</h2>
+        <table style="width: 100%; border-collapse: collapse;">
+          <tr>
+            <td style="padding: 10px; border: 1px solid #E5E5E5; font-weight: bold;">Service:</td>
+            <td style="padding: 10px; border: 1px solid #E5E5E5;" id="pdfService">Nettoyage vitres</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border: 1px solid #E5E5E5; font-weight: bold;">Date:</td>
+            <td style="padding: 10px; border: 1px solid #E5E5E5;" id="pdfAppointmentDate">Lundi 17 Février 2026</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border: 1px solid #E5E5E5; font-weight: bold;">Heure:</td>
+            <td style="padding: 10px; border: 1px solid #E5E5E5;" id="pdfAppointmentTime">10:00</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border: 1px solid #E5E5E5; font-weight: bold;">Commentaires:</td>
+            <td style="padding: 10px; border: 1px solid #E5E5E5;" id="pdfComments">Aucun</td>
+          </tr>
+        </table>
+      </div>
+      
+      <!-- Images -->
+      <div id="pdfImages" style="margin-bottom: 30px;">
+        <h2 style="color: #1B4D3E; font-size: 22px; margin-bottom: 15px;">Photos fournies</h2>
+        <div id="pdfImagesList" style="display: flex; flex-wrap: wrap; gap: 10px;">
+          <!-- Images will be inserted here -->
+          <p style="color: #8AA89F;">Aucune photo fournie</p>
+        </div>
+      </div>
+      
+      <!-- Footer -->
+      <div style="margin-top: 40px; padding-top: 20px; border-top: 2px solid #E8CAA4; text-align: center; color: #2C3E3D; font-size: 14px;">
+        <p>Eco Nettoyage 85 - Nettoyage écologique professionnel</p>
+        <p>Tél: +33 6 25 63 66 45 | Email: contact@eco-nettoyage85.fr</p>
+        <p>Vendée · La Rochelle · Niort · Fontenay-le-Comte</p>
+        <p style="margin-top: 10px; font-size: 12px; color: #8AA89F;">Ce document est une confirmation de rendez-vous automatique</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // =====================================================
+    // RENDEZ-VOUS PAGE - PROFESSIONAL BOOKING SYSTEM
+    // DEVELOPER: S-TECH DIGITAL INK
+    // EASY TO UPDATE - JUST MODIFY THE SCHEDULE BELOW
+    // =====================================================
+    
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+    
+    // =====================================================
+    // EASY SCHEDULE UPDATE - MODIFY THIS OBJECT ONLY
+    // Format: 'YYYY-MM-DD': ['HH:MM', 'HH:MM', ...]
+    // Add or remove dates and times as needed
+    // Times are in 24h format
+    // =====================================================
+    
+    const timeSlots = {
+      // Week of February 17, 2026 - MODIFY AS NEEDED
+      '2026-02-17': ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00'], // Tuesday
+      '2026-02-18': ['09:30', '10:30', '11:30', '14:30', '15:30', '16:30'], // Wednesday
+      '2026-02-19': ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00', '17:00'], // Thursday
+      '2026-02-20': ['09:00', '10:00', '11:00', '14:00', '15:00'], // Friday
+      '2026-02-21': ['09:00', '10:00', '11:00'], // Saturday
+      '2026-02-22': [], // Sunday - No slots
+      '2026-02-23': ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00'], // Monday
+      '2026-02-24': ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00'], // Tuesday
+      '2026-02-25': ['09:30', '10:30', '11:30', '14:30', '15:30'], // Wednesday
+      '2026-02-26': ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00'], // Thursday
+      '2026-02-27': ['09:00', '10:00', '11:00', '14:00', '15:00'], // Friday
+      '2026-02-28': ['09:00', '10:00', '11:00'], // Saturday
+      '2026-03-01': [], // Sunday - No slots
+    };
+    
+    // =====================================================
+    // ADDITIONAL OPTIONS - CONFIGURE AS NEEDED
+    // =====================================================
+    
+    const config = {
+      whatsappNumber: '33625636645', // WhatsApp number without '+'
+      businessName: 'Eco Nettoyage 85',
+      workingDays: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      defaultMessage: 'Bonjour, je souhaite confirmer mon rendez-vous de nettoyage.',
+      maxFileSize: 10 * 1024 * 1024, // 10MB
+      allowedFileTypes: ['image/jpeg', 'image/jpg', 'image/png', 'image/webp']
+    };
+    
+    // =====================================================
+    // GENERATE DAYS FROM TIME SLOTS
+    // =====================================================
+    
+    const daysGrid = document.getElementById('daysGrid');
+    const selectedTimeInput = document.getElementById('selectedTime');
+    let selectedDateTime = null;
+    
+    // French day names
+    const dayNames = {
+      'Monday': 'Lundi',
+      'Tuesday': 'Mardi',
+      'Wednesday': 'Mercredi',
+      'Thursday': 'Jeudi',
+      'Friday': 'Vendredi',
+      'Saturday': 'Samedi',
+      'Sunday': 'Dimanche'
+    };
+    
+    // Sort dates
+    const sortedDates = Object.keys(timeSlots).sort();
+    
+    function formatDateFrench(dateStr) {
+      const date = new Date(dateStr + 'T12:00:00');
+      return date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' });
+    }
+    
+    function getDayName(dateStr) {
+      const date = new Date(dateStr + 'T12:00:00');
+      const dayIndex = date.getDay();
+      const days = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+      return days[dayIndex];
+    }
+    
+    // Generate HTML for days
+    sortedDates.forEach(dateStr => {
+      const slots = timeSlots[dateStr] || [];
+      const dayName = getDayName(dateStr);
+      const dateFrench = formatDateFrench(dateStr);
+      const isToday = dateStr === new Date().toISOString().split('T')[0];
+      
+      const dayCard = document.createElement('div');
+      dayCard.className = `day-card ${isToday ? 'active' : ''}`;
+      dayCard.dataset.date = dateStr;
+      
+      let slotsHtml = '';
+      if (slots.length > 0) {
+        slots.forEach(time => {
+          slotsHtml += `<span class="time-slot" data-time="${time}">${time}</span>`;
+        });
+      } else {
+        slotsHtml = '<p class="no-slots">Aucun créneau disponible</p>';
+      }
+      
+      dayCard.innerHTML = `
+        <div class="day-header">
+          <span class="day-name">${dayName}</span>
+          <span class="day-date">${dateFrench}</span>
+        </div>
+        <div class="time-slots">
+          ${slotsHtml}
+        </div>
+      `;
+      
+      daysGrid.appendChild(dayCard);
+    });
+    
+    // =====================================================
+    // TIME SLOT SELECTION
+    // =====================================================
+    
+    // Handle time slot clicks
+    document.querySelectorAll('.time-slot').forEach(slot => {
+      slot.addEventListener('click', function(e) {
+        e.stopPropagation();
+        
+        // Remove selected class from all slots
+        document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+        
+        // Add selected class to this slot
+        this.classList.add('selected');
+        
+        // Get parent day card
+        const dayCard = this.closest('.day-card');
+        const date = dayCard.dataset.date;
+        const time = this.dataset.time;
+        
+        // Format for display
+        const dateObj = new Date(date + 'T12:00:00');
+        const formattedDate = dateObj.toLocaleDateString('fr-FR', { 
+          weekday: 'long', 
+          day: 'numeric', 
+          month: 'long' 
+        });
+        
+        selectedDateTime = {
+          date: date,
+          time: time,
+          display: `${formattedDate} à ${time}`
+        };
+        
+        selectedTimeInput.value = selectedDateTime.display;
+        
+        // Highlight active day
+        document.querySelectorAll('.day-card').forEach(card => {
+          card.classList.remove('active');
+        });
+        dayCard.classList.add('active');
+      });
+    });
+    
+    // =====================================================
+    // FILE UPLOAD HANDLING
+    // =====================================================
+    
+    const fileUpload = document.getElementById('fileUpload');
+    const imageUpload = document.getElementById('imageUpload');
+    const filePreview = document.getElementById('filePreview');
+    let uploadedFiles = [];
+    
+    imageUpload.addEventListener('change', function(e) {
+      const files = Array.from(e.target.files);
+      
+      files.forEach(file => {
+        // Check file type
+        if (!config.allowedFileTypes.includes(file.type)) {
+          alert(`Le fichier ${file.name} n'est pas une image valide. Formats acceptés: JPG, PNG, WEBP`);
+          return;
+        }
+        
+        // Check file size
+        if (file.size > config.maxFileSize) {
+          alert(`Le fichier ${file.name} dépasse 10 Mo`);
+          return;
+        }
+        
+        uploadedFiles.push(file);
+      });
+      
+      updateFilePreview();
+    });
+    
+    function updateFilePreview() {
+      filePreview.innerHTML = '';
+      
+      uploadedFiles.forEach((file, index) => {
+        const previewItem = document.createElement('div');
+        previewItem.className = 'file-preview-item';
+        previewItem.innerHTML = `
+          <i class="fas fa-image"></i>
+          <span>${file.name.substring(0, 20)}${file.name.length > 20 ? '...' : ''}</span>
+          <button type="button" onclick="removeFile(${index})"><i class="fas fa-times"></i></button>
+        `;
+        filePreview.appendChild(previewItem);
+      });
+    }
+    
+    window.removeFile = function(index) {
+      uploadedFiles.splice(index, 1);
+      
+      // Reset file input
+      const dt = new DataTransfer();
+      uploadedFiles.forEach(file => dt.items.add(file));
+      imageUpload.files = dt.files;
+      
+      updateFilePreview();
+    };
+    
+    // =====================================================
+    // FORM VALIDATION
+    // =====================================================
+    
+    function validateForm() {
+      let isValid = true;
+      
+      // Clear all errors
+      document.querySelectorAll('.error-message').forEach(el => el.classList.remove('show'));
+      document.querySelectorAll('input, select').forEach(el => el.classList.remove('error'));
+      
+      // Check required fields
+      const requiredFields = [
+        { id: 'firstName', errorId: 'firstNameError', message: 'Prénom requis' },
+        { id: 'lastName', errorId: 'lastNameError', message: 'Nom requis' },
+        { id: 'phone', errorId: 'phoneError', message: 'Téléphone requis' },
+        { id: 'address', errorId: 'addressError', message: 'Adresse requise' },
+        { id: 'service', errorId: 'serviceError', message: 'Service requis' }
+      ];
+      
+      requiredFields.forEach(field => {
+        const input = document.getElementById(field.id);
+        const error = document.getElementById(field.errorId);
+        
+        if (!input.value) {
+          input.classList.add('error');
+          error.classList.add('show');
+          error.textContent = field.message;
+          isValid = false;
+        }
+      });
+      
+      // Check time selection
+      if (!selectedDateTime) {
+        const timeError = document.getElementById('timeError');
+        timeError.classList.add('show');
+        timeError.textContent = 'Veuillez sélectionner un créneau';
+        isValid = false;
+      }
+      
+      // Validate phone (simple check)
+      const phone = document.getElementById('phone').value;
+      if (phone && !phone.match(/^[0-9+\-\s]{10,}$/)) {
+        const phoneError = document.getElementById('phoneError');
+        phoneError.classList.add('show');
+        phoneError.textContent = 'Numéro de téléphone invalide';
+        isValid = false;
+      }
+      
+      return isValid;
+    }
+    
+    // =====================================================
+    // GENERATE PDF AND SEND TO WHATSAPP
+    // =====================================================
+    
+    async function generatePDFAndSendToWhatsApp() {
+      const submitBtn = document.getElementById('submitBtn');
+      const originalText = submitBtn.innerHTML;
+      
+      try {
+        // Update button state
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Génération du PDF...';
+        submitBtn.disabled = true;
+        
+        // Get form values
+        const firstName = document.getElementById('firstName').value;
+        const lastName = document.getElementById('lastName').value;
+        const phone = document.getElementById('phone').value;
+        const email = document.getElementById('email').value || 'Non renseigné';
+        const address = document.getElementById('address').value;
+        const service = document.getElementById('service').value;
+        const comments = document.getElementById('comments').value || 'Aucun commentaire';
+        
+        // Generate reference
+        const ref = 'EN85-' + new Date().getFullYear() + '-' + 
+                   Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+        const today = new Date().toLocaleDateString('fr-FR');
+        
+        // Update PDF template
+        document.getElementById('pdfRef').textContent = ref;
+        document.getElementById('pdfDate').textContent = today;
+        document.getElementById('pdfName').textContent = firstName + ' ' + lastName;
+        document.getElementById('pdfPhone').textContent = phone;
+        document.getElementById('pdfEmail').textContent = email;
+        document.getElementById('pdfAddress').textContent = address;
+        document.getElementById('pdfService').textContent = service;
+        document.getElementById('pdfAppointmentDate').textContent = selectedDateTime.display.split(' à ')[0];
+        document.getElementById('pdfAppointmentTime').textContent = selectedDateTime.time;
+        document.getElementById('pdfComments').textContent = comments;
+        
+        // Handle images in PDF
+        const pdfImagesDiv = document.getElementById('pdfImagesList');
+        pdfImagesDiv.innerHTML = '';
+        
+        if (uploadedFiles.length > 0) {
+          for (let i = 0; i < uploadedFiles.length; i++) {
+            const file = uploadedFiles[i];
+            const reader = new FileReader();
+            
+            await new Promise((resolve) => {
+              reader.onload = function(e) {
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.style.width = '150px';
+                img.style.height = '150px';
+                img.style.objectFit = 'cover';
+                img.style.borderRadius = '10px';
+                img.style.margin = '5px';
+                pdfImagesDiv.appendChild(img);
+                resolve();
+              };
+              reader.readAsDataURL(file);
+            });
+          }
+        } else {
+          pdfImagesDiv.innerHTML = '<p style="color: #8AA89F;">Aucune photo fournie</p>';
+        }
+        
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Génération du PDF...';
+        
+        // Generate PDF
+        const element = document.getElementById('pdfTemplate');
+        const opt = {
+          margin: [0.5, 0.5, 0.5, 0.5],
+          filename: `rendezvous_${firstName}_${lastName}_${ref}.pdf`,
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: { scale: 2, letterRendering: true },
+          jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+        };
+        
+        const pdfBlob = await html2pdf().set(opt).from(element).output('blob');
+        
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Préparation WhatsApp...';
+        
+        // Create WhatsApp message
+        const message = `*Confirmation de rendez-vous - Eco Nettoyage 85*
+        
+*Client:* ${firstName} ${lastName}
+*Téléphone:* ${phone}
+*Email:* ${email}
+*Adresse:* ${address}
+*Service:* ${service}
+*Date:* ${selectedDateTime.display}
+*Commentaires:* ${comments}
+*Référence:* ${ref}
+
+Merci de confirmer ce rendez-vous.`;
+        
+        // Upload PDF to temporary storage (using file.io as example)
+        // Note: In production, you might want to use your own server
+        const formData = new FormData();
+        formData.append('file', pdfBlob, `rendezvous_${ref}.pdf`);
+        
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi du PDF...';
+        
+        // For demo purposes, we'll use file.io (free temporary file hosting)
+        // Max 2GB, files expire after 1 download or 14 days
+        const uploadResponse = await fetch('https://file.io', {
+          method: 'POST',
+          body: formData
+        });
+        
+        const uploadResult = await uploadResponse.json();
+        
+        if (uploadResult.success) {
+          // Create WhatsApp link with PDF link
+          const pdfLink = uploadResult.link;
+          const whatsappMessage = encodeURIComponent(
+            `${message}\n\nLien du PDF de confirmation: ${pdfLink}\n\n` +
+            `Veuillez télécharger le PDF pour voir les détails et photos.`
+          );
+          
+          const whatsappUrl = `https://wa.me/${config.whatsappNumber}?text=${whatsappMessage}`;
+          
+          // Open WhatsApp
+          window.open(whatsappUrl, '_blank');
+          
+          // Show success message
+          submitBtn.innerHTML = '<i class="fas fa-check"></i> Rendez-vous confirmé !';
+          submitBtn.style.background = '#28a745';
+          
+          // Reset form after 3 seconds
+          setTimeout(() => {
+            document.getElementById('bookingForm').reset();
+            selectedDateTime = null;
+            selectedTimeInput.value = '';
+            uploadedFiles = [];
+            filePreview.innerHTML = '';
+            document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+            document.querySelectorAll('.day-card').forEach(c => c.classList.remove('active'));
+            
+            submitBtn.innerHTML = originalText;
+            submitBtn.style.background = '';
+            submitBtn.disabled = false;
+          }, 3000);
+        } else {
+          throw new Error('Upload failed');
+        }
+        
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Une erreur est survenue. Veuillez réessayer ou nous contacter directement par WhatsApp.');
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+      }
+    }
+    
+    // =====================================================
+    // FORM SUBMIT HANDLER
+    // =====================================================
+    
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      if (validateForm()) {
+        generatePDFAndSendToWhatsApp();
+      }
+    });
+    
+    // =====================================================
+    // ADDITIONAL FEATURES
+    // =====================================================
+    
+    // Drag and drop for file upload
+    fileUpload.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      fileUpload.style.borderColor = '#D4AF37';
+      fileUpload.style.background = 'rgba(212,175,55,0.05)';
+    });
+    
+    fileUpload.addEventListener('dragleave', (e) => {
+      e.preventDefault();
+      fileUpload.style.borderColor = '#8AA89F';
+      fileUpload.style.background = '';
+    });
+    
+    fileUpload.addEventListener('drop', (e) => {
+      e.preventDefault();
+      fileUpload.style.borderColor = '#8AA89F';
+      fileUpload.style.background = '';
+      
+      const files = Array.from(e.dataTransfer.files);
+      const validFiles = files.filter(file => 
+        config.allowedFileTypes.includes(file.type) && 
+        file.size <= config.maxFileSize
+      );
+      
+      if (validFiles.length !== files.length) {
+        alert('Certains fichiers ont été ignorés (format non supporté ou taille >10Mo)');
+      }
+      
+      uploadedFiles = [...uploadedFiles, ...validFiles];
+      
+      // Update file input
+      const dt = new DataTransfer();
+      uploadedFiles.forEach(file => dt.items.add(file));
+      imageUpload.files = dt.files;
+      
+      updateFilePreview();
+    });
+    
+    // Auto-fill phone from URL parameter (for testing)
+    const urlParams = new URLSearchParams(window.location.search);
+    const testPhone = urlParams.get('phone');
+    if (testPhone) {
+      document.getElementById('phone').value = testPhone;
+    }
+    
+    // =====================================================
+    // INSTRUCTIONS FOR UPDATING SCHEDULE
+    // =====================================================
+    /*
+      TO UPDATE AVAILABLE TIMES:
+      
+      1. Locate the 'timeSlots' object at line ~280
+      2. Format: 'YYYY-MM-DD': ['HH:MM', 'HH:MM', ...]
+      3. Examples:
+         - '2026-02-17': ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00']
+         - '2026-02-18': ['09:30', '10:30', '11:30']  (half-day)
+         - '2026-02-19': []  (no slots available)
+      
+      4. The system automatically generates the display
+      5. Days with no slots show "Aucun créneau disponible"
+      
+      TO UPDATE WHATSAPP NUMBER:
+      - Change 'whatsappNumber' in the config object at line ~310
+      
+      TO UPDATE BUSINESS INFO:
+      - Modify the config object at line ~310
+    */
+  </script>
+</body>
+</html>
