@@ -1,208 +1,964 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Message Scheduler</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 20px;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        input, textarea, select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        textarea {
-            height: 100px;
-            resize: vertical;
-        }
-        button {
-            background-color: #25D366;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-right: 10px;
-        }
-        button:hover {
-            background-color: #128C7E;
-        }
-        #sendNow {
-            background-color: #075e54;
-        }
-        .message-container {
-            margin-top: 20px;
-            padding: 10px;
-            border-radius: 4px;
-            display: none;
-        }
-        .success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-        .error {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>Eco Nettoyage 85 · Prendre Rendez-vous | Nettoyage Écologique Vendée</title>
+  
+  <!-- META TAGS -->
+  <meta name="description" content="Prenez rendez-vous en ligne avec Eco Nettoyage 85 pour un nettoyage écologique en Vendée, La Rochelle et Niort. Confirmation immédiate par WhatsApp.">
+  <meta name="keywords" content="rendez-vous nettoyage, réservation en ligne, nettoyage écologique vendée">
+  <meta name="author" content="Eco Nettoyage 85">
+  <meta name="theme-color" content="#1B4D3E">
+  
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --primary-deep: #1B4D3E;
+      --primary-sage: #8AA89F;
+      --primary-sand: #E8CAA4;
+      --primary-gold: #D4AF37;
+      --primary-charcoal: #2C3E3D;
+      --primary-white: #FFFFFF;
+      --primary-offwhite: #F9F7F4;
+      --shadow-lg: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--primary-offwhite);
+      color: var(--primary-charcoal);
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header */
+    .booking-header {
+      background: linear-gradient(135deg, #1B4D3E 0%, #2C5A4B 100%);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: #D4AF37;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .logo-icon i {
+      color: #1B4D3E;
+      font-size: 20px;
+    }
+    
+    .logo-text {
+      color: white;
+      font-size: 20px;
+      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .logo-text span {
+      color: #D4AF37;
+    }
+    
+    .back-home {
+      color: white;
+      text-decoration: none;
+      padding: 8px 16px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50px;
+      font-size: 14px;
+    }
+    
+    /* Main Content */
+    .booking-main {
+      padding: 30px 0;
+    }
+    
+    h1 {
+      font-size: 28px;
+      margin-bottom: 5px;
+      color: #1B4D3E;
+    }
+    
+    @media (min-width: 768px) {
+      h1 {
+        font-size: 42px;
+      }
+    }
+    
+    .subtitle {
+      color: #8AA89F;
+      margin-bottom: 30px;
+      font-size: 16px;
+    }
+    
+    /* Grid Layout */
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+    
+    @media (min-width: 992px) {
+      .booking-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+      }
+    }
+    
+    /* Form Container */
+    .form-container {
+      background: white;
+      border-radius: 30px;
+      padding: 30px 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+    
+    @media (min-width: 768px) {
+      .form-container {
+        padding: 40px;
+      }
+    }
+    
+    .form-title {
+      font-size: 24px;
+      margin-bottom: 5px;
+      color: #1B4D3E;
+    }
+    
+    .form-subtitle {
+      color: #8AA89F;
+      margin-bottom: 25px;
+      font-size: 14px;
+    }
+    
+    /* Form Elements */
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    
+    @media (min-width: 576px) {
+      .form-row {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+      color: #1B4D3E;
+      font-size: 14px;
+    }
+    
+    label i {
+      color: #D4AF37;
+      margin-right: 8px;
+    }
+    
+    .required::after {
+      content: '*';
+      color: #e74c3c;
+      margin-left: 4px;
+    }
+    
+    input, select, textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid transparent;
+      border-radius: 10px;
+      background: #F9F7F4;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      transition: all 0.3s;
+    }
+    
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #D4AF37;
+      background: white;
+    }
+    
+    /* File Upload */
+    .file-upload-area {
+      background: #F9F7F4;
+      border: 2px dashed #8AA89F;
+      border-radius: 10px;
+      padding: 30px 20px;
+      text-align: center;
+      cursor: pointer;
+    }
+    
+    .file-upload-area i {
+      font-size: 40px;
+      color: #D4AF37;
+      margin-bottom: 10px;
+    }
+    
+    .file-upload-area p {
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+    
+    .file-upload-area small {
+      color: #8AA89F;
+    }
+    
+    .file-preview {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    
+    .file-item {
+      background: #F9F7F4;
+      padding: 5px 10px;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+    }
+    
+    .file-item i {
+      color: #D4AF37;
+    }
+    
+    .file-item button {
+      background: none;
+      border: none;
+      color: #e74c3c;
+      cursor: pointer;
+      margin-left: 5px;
+    }
+    
+    /* Time Slots Section */
+    .times-container {
+      background: white;
+      border-radius: 30px;
+      padding: 30px 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+    
+    .times-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+    
+    .times-header i {
+      font-size: 30px;
+      color: #D4AF37;
+    }
+    
+    .times-header h2 {
+      font-size: 22px;
+      color: #1B4D3E;
+    }
+    
+    .times-header p {
+      color: #8AA89F;
+      font-size: 14px;
+    }
+    
+    .day-card {
+      background: #F9F7F4;
+      border-radius: 15px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+    
+    .day-card.active {
+      background: linear-gradient(135deg, #1B4D3E 0%, #2C5A4B 100%);
+      color: white;
+    }
+    
+    .day-card.active .day-name,
+    .day-card.active .day-date {
+      color: white;
+    }
+    
+    .day-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    
+    .day-name {
+      font-weight: 700;
+      color: #1B4D3E;
+    }
+    
+    .day-date {
+      color: #8AA89F;
+      font-size: 14px;
+    }
+    
+    .time-slots {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .time-slot {
+      padding: 8px 16px;
+      background: white;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    
+    .time-slot:hover {
+      background: #D4AF37;
+      color: #1B4D3E;
+    }
+    
+    .time-slot.selected {
+      background: #D4AF37;
+      color: #1B4D3E;
+    }
+    
+    .no-slots {
+      color: #8AA89F;
+      font-style: italic;
+      padding: 10px 0;
+    }
+    
+    /* Info Card */
+    .info-card {
+      background: linear-gradient(135deg, #1B4D3E 0%, #2C5A4B 100%);
+      color: white;
+      border-radius: 15px;
+      padding: 20px;
+      margin-top: 25px;
+    }
+    
+    .info-card h3 {
+      color: white;
+      margin-bottom: 15px;
+      font-size: 18px;
+    }
+    
+    .info-card ul {
+      list-style: none;
+    }
+    
+    .info-card li {
+      padding: 8px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+    }
+    
+    .info-card li i {
+      color: #D4AF37;
+    }
+    
+    /* Submit Button */
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, #1B4D3E 0%, #2C5A4B 100%);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 25px;
+    }
+    
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(27,77,62,0.3);
+    }
+    
+    .submit-btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+    
+    /* Error Messages */
+    .error-message {
+      color: #e74c3c;
+      font-size: 12px;
+      margin-top: 5px;
+      display: none;
+    }
+    
+    .error-message.show {
+      display: block;
+    }
+    
+    input.error, select.error {
+      border-color: #e74c3c;
+    }
+    
+    /* Selected Time Input */
+    #selectedTime {
+      background: #F0F0F0;
+      cursor: default;
+    }
+  </style>
 </head>
 <body>
-    <h2>WhatsApp Message Manager</h2>
+  <!-- Header -->
+  <header class="booking-header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <div class="logo-icon">
+            <i class="fas fa-leaf"></i>
+          </div>
+          <div class="logo-text">Eco<span>Nettoyage85</span></div>
+        </div>
+        <a href="index.html" class="back-home">
+          <i class="fas fa-arrow-left"></i> Retour
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="booking-main">
+    <div class="container">
+      <h1>Prendre rendez-vous</h1>
+      <p class="subtitle">Remplissez le formulaire et recevez votre confirmation sur WhatsApp</p>
+      
+      <div class="booking-grid">
+        <!-- LEFT COLUMN - FORM -->
+        <div class="form-container">
+          <h2 class="form-title">Informations de réservation</h2>
+          <p class="form-subtitle">Tous les champs marqués d'un * sont obligatoires</p>
+          
+          <form id="bookingForm">
+            <!-- Row 1: First Name & Last Name -->
+            <div class="form-row">
+              <div class="form-group">
+                <label><i class="fas fa-user"></i> Prénom <span class="required"></span></label>
+                <input type="text" id="firstName" placeholder="Votre prénom" value="">
+                <div class="error-message" id="firstNameError">Prénom requis</div>
+              </div>
+              
+              <div class="form-group">
+                <label><i class="fas fa-user"></i> Nom <span class="required"></span></label>
+                <input type="text" id="lastName" placeholder="Votre nom" value="">
+                <div class="error-message" id="lastNameError">Nom requis</div>
+              </div>
+            </div>
+            
+            <!-- Row 2: Phone & Email -->
+            <div class="form-row">
+              <div class="form-group">
+                <label><i class="fas fa-phone"></i> Téléphone <span class="required"></span></label>
+                <input type="tel" id="phone" placeholder="06 25 63 66 43" value="">
+                <div class="error-message" id="phoneError">Téléphone requis</div>
+              </div>
+              
+              <div class="form-group">
+                <label><i class="fas fa-envelope"></i> Email</label>
+                <input type="email" id="email" placeholder="votre@email.com" value="">
+              </div>
+            </div>
+            
+            <!-- Address -->
+            <div class="form-group">
+              <label><i class="fas fa-map-marker-alt"></i> Adresse complète <span class="required"></span></label>
+              <input type="text" id="address" placeholder="Numéro, rue, code postal, ville" value="">
+              <div class="error-message" id="addressError">Adresse requise</div>
+            </div>
+            
+            <!-- Row 3: Service & Selected Time -->
+            <div class="form-row">
+              <div class="form-group">
+                <label><i class="fas fa-concierge-bell"></i> Service <span class="required"></span></label>
+                <select id="service">
+                  <option value="" selected disabled>-- Choisissez un service --</option>
+                  <option value="Nettoyage de vitres">Nettoyage de vitres</option>
+                  <option value="Nettoyage de terrasse">Nettoyage de terrasse</option>
+                  <option value="Nettoyage de voiture">Nettoyage de voiture</option>
+                  <option value="Nettoyage Airbnb">Nettoyage Airbnb</option>
+                  <option value="Nettoyage maison">Nettoyage maison</option>
+                  <option value="Nettoyage bureaux">Nettoyage bureaux</option>
+                  <option value="Nettoyage canapé">Nettoyage canapé / tapis</option>
+                  <option value="Après travaux">Nettoyage après travaux</option>
+                </select>
+                <div class="error-message" id="serviceError">Service requis</div>
+              </div>
+              
+              <div class="form-group">
+                <label><i class="fas fa-clock"></i> Créneau sélectionné <span class="required"></span></label>
+                <input type="text" id="selectedTime" placeholder="Cliquez sur un horaire à droite" readonly value="">
+                <div class="error-message" id="timeError">Veuillez sélectionner un horaire</div>
+              </div>
+            </div>
+            
+            <!-- File Upload -->
+            <div class="form-group">
+              <label><i class="fas fa-camera"></i> Photos (optionnel - max 3)</label>
+              <div class="file-upload-area" id="fileUploadArea">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>Cliquez pour ajouter des photos</p>
+                <small>PNG, JPG - 5 Mo max</small>
+                <input type="file" id="imageUpload" accept="image/jpeg,image/jpg,image/png" multiple style="display: none;">
+              </div>
+              <div class="file-preview" id="filePreview"></div>
+            </div>
+            
+            <!-- Comments -->
+            <div class="form-group">
+              <label><i class="fas fa-comment"></i> Commentaires</label>
+              <textarea id="comments" rows="4" placeholder="Informations complémentaires..."></textarea>
+            </div>
+            
+            <!-- Submit Button -->
+            <button type="submit" class="submit-btn" id="submitBtn">
+              <i class="fab fa-whatsapp"></i> Confirmer sur WhatsApp
+            </button>
+          </form>
+        </div>
+        
+        <!-- RIGHT COLUMN - AVAILABLE TIMES -->
+        <div class="times-container">
+          <div class="times-header">
+            <i class="fas fa-calendar-alt"></i>
+            <div>
+              <h2>Créneaux disponibles</h2>
+              <p>Février - Mars 2026</p>
+            </div>
+          </div>
+          
+          <!-- Time slots will be populated here -->
+          <div id="daysGrid"></div>
+          
+          <!-- Info Card -->
+          <div class="info-card">
+            <h3><i class="fas fa-info-circle"></i> Infos pratiques</h3>
+            <ul>
+              <li><i class="fas fa-check-circle"></i> Confirmation immédiate WhatsApp</li>
+              <li><i class="fas fa-check-circle"></i> Annulation gratuite jusqu'à 2h avant</li>
+              <li><i class="fas fa-check-circle"></i> Intervention 7j/7 de 8h à 20h</li>
+              <li><i class="fas fa-check-circle"></i> Devis inclus dans la confirmation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // =====================================================
+    // CONFIGURATION
+    // =====================================================
     
-    <div class="form-group">
-        <label for="phoneNumber">Phone Number (with country code):</label>
-        <input type="text" id="phoneNumber" placeholder="e.g., 1234567890" value="1234567890">
-    </div>
-
-    <div class="form-group">
-        <label for="message">Message:</label>
-        <textarea id="message" placeholder="Type your message here...">Hello! This is a test message.</textarea>
-    </div>
-
-    <div class="form-group">
-        <label for="sendOption">Send Option:</label>
-        <select id="sendOption" onchange="toggleManualEntry()">
-            <option value="now">Send Now</option>
-            <option value="manual">Let me decide when to send</option>
-        </select>
-    </div>
-
-    <div id="manualControls" style="display: none;">
-        <p>Click the button below when you're ready to send the message:</p>
-        <button id="manualSendBtn" onclick="sendManualMessage()">📤 Send Message Now</button>
-    </div>
-
-    <div class="form-group" id="sendNowControls">
-        <button id="sendNow" onclick="sendMessageNow()">📱 Send WhatsApp Message Now</button>
-    </div>
-
-    <div id="messageContainer" class="message-container"></div>
-
-    <script>
-        function toggleManualEntry() {
-            const sendOption = document.getElementById('sendOption').value;
-            const manualControls = document.getElementById('manualControls');
-            const sendNowControls = document.getElementById('sendNowControls');
+    const config = {
+      whatsappNumber: '33625636643', // +33 6 25 63 66 43
+      maxFiles: 3,
+      maxFileSize: 5 * 1024 * 1024 // 5MB
+    };
+    
+    // =====================================================
+    // TIME SLOTS - EASY TO UPDATE
+    // =====================================================
+    
+    const timeSlots = {
+      '2026-02-17': ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00'],
+      '2026-02-18': ['09:30', '10:30', '11:30', '14:30', '15:30', '16:30'],
+      '2026-02-19': ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00', '17:00'],
+      '2026-02-20': ['09:00', '10:00', '11:00', '14:00', '15:00'],
+      '2026-02-21': ['09:00', '10:00', '11:00'],
+      '2026-02-22': [], // Sunday closed
+      '2026-02-23': ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00'],
+      '2026-02-24': ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00'],
+      '2026-02-25': ['09:30', '10:30', '11:30', '14:30', '15:30'],
+      '2026-02-26': ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00'],
+      '2026-02-27': ['09:00', '10:00', '11:00', '14:00', '15:00'],
+      '2026-02-28': ['09:00', '10:00', '11:00']
+    };
+    
+    // =====================================================
+    // GLOBAL VARIABLES
+    // =====================================================
+    
+    let selectedDateTime = null;
+    let uploadedFiles = [];
+    
+    // =====================================================
+    // DISPLAY TIME SLOTS
+    // =====================================================
+    
+    const daysGrid = document.getElementById('daysGrid');
+    const selectedTimeInput = document.getElementById('selectedTime');
+    
+    function displayTimeSlots() {
+      daysGrid.innerHTML = '';
+      
+      // Sort dates
+      const sortedDates = Object.keys(timeSlots).sort();
+      
+      sortedDates.forEach(dateStr => {
+        const slots = timeSlots[dateStr] || [];
+        const date = new Date(dateStr + 'T12:00:00');
+        
+        // Get day name in French
+        const dayName = date.toLocaleDateString('fr-FR', { weekday: 'long' });
+        const dayDate = date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' });
+        
+        // Create day card
+        const dayCard = document.createElement('div');
+        dayCard.className = 'day-card';
+        dayCard.dataset.date = dateStr;
+        
+        // Create header
+        const dayHeader = document.createElement('div');
+        dayHeader.className = 'day-header';
+        dayHeader.innerHTML = `
+          <span class="day-name">${dayName}</span>
+          <span class="day-date">${dayDate}</span>
+        `;
+        dayCard.appendChild(dayHeader);
+        
+        // Create time slots container
+        const timeSlotsContainer = document.createElement('div');
+        timeSlotsContainer.className = 'time-slots';
+        
+        if (slots.length > 0) {
+          slots.forEach(time => {
+            const timeSlot = document.createElement('span');
+            timeSlot.className = 'time-slot';
+            timeSlot.textContent = time;
+            timeSlot.dataset.time = time;
             
-            if (sendOption === 'manual') {
-                manualControls.style.display = 'block';
-                sendNowControls.style.display = 'none';
-            } else {
-                manualControls.style.display = 'none';
-                sendNowControls.style.display = 'block';
-            }
+            // Add click event
+            timeSlot.addEventListener('click', function(e) {
+              e.stopPropagation();
+              
+              // Remove selected from all slots
+              document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+              document.querySelectorAll('.day-card').forEach(c => c.classList.remove('active'));
+              
+              // Add selected to this slot
+              this.classList.add('selected');
+              
+              // Add active to parent day
+              dayCard.classList.add('active');
+              
+              // Set selected date and time
+              const selectedDate = date.toLocaleDateString('fr-FR', { 
+                weekday: 'long', 
+                day: 'numeric', 
+                month: 'long' 
+              });
+              
+              selectedDateTime = {
+                date: dateStr,
+                time: time,
+                display: `${selectedDate} à ${time}`
+              };
+              
+              selectedTimeInput.value = selectedDateTime.display;
+            });
+            
+            timeSlotsContainer.appendChild(timeSlot);
+          });
+        } else {
+          const noSlots = document.createElement('p');
+          noSlots.className = 'no-slots';
+          noSlots.textContent = 'Aucun créneau disponible';
+          timeSlotsContainer.appendChild(noSlots);
         }
-
-        function validateInputs() {
-            const phoneNumber = document.getElementById('phoneNumber').value.trim();
-            const message = document.getElementById('message').value.trim();
-
-            if (!phoneNumber) {
-                showMessage('Please enter a phone number', 'error');
-                return false;
-            }
-
-            if (!message) {
-                showMessage('Please enter a message', 'error');
-                return false;
-            }
-
-            // Basic phone number validation (allowing only digits and + sign)
-            const phoneRegex = /^\+?[\d\s-]+$/;
-            if (!phoneRegex.test(phoneNumber)) {
-                showMessage('Please enter a valid phone number', 'error');
-                return false;
-            }
-
-            return true;
+        
+        dayCard.appendChild(timeSlotsContainer);
+        daysGrid.appendChild(dayCard);
+      });
+    }
+    
+    // Call the function
+    displayTimeSlots();
+    
+    // =====================================================
+    // FILE UPLOAD HANDLING
+    // =====================================================
+    
+    const fileUploadArea = document.getElementById('fileUploadArea');
+    const imageUpload = document.getElementById('imageUpload');
+    const filePreview = document.getElementById('filePreview');
+    
+    fileUploadArea.addEventListener('click', function() {
+      imageUpload.click();
+    });
+    
+    imageUpload.addEventListener('change', function(e) {
+      const files = Array.from(e.target.files).slice(0, config.maxFiles);
+      
+      files.forEach(file => {
+        // Check file size
+        if (file.size > config.maxFileSize) {
+          alert(`Fichier trop volumineux: ${file.name}. Maximum 5 Mo.`);
+          return;
         }
-
-        function sendMessageNow() {
-            if (!validateInputs()) return;
-
-            const phoneNumber = document.getElementById('phoneNumber').value.trim();
-            const message = document.getElementById('message').value.trim();
-
-            // Clean phone number (remove spaces, dashes, etc.)
-            const cleanNumber = phoneNumber.replace(/[\s-]/g, '');
-            
-            // Encode the message for URL
-            const encodedMessage = encodeURIComponent(message);
-            
-            // Create WhatsApp URL
-            const whatsappUrl = `https://wa.me/${cleanNumber}?text=${encodedMessage}`;
-            
-            // Open WhatsApp in new tab
-            window.open(whatsappUrl, '_blank');
-            
-            showMessage('WhatsApp opened! You can now send your message.', 'success');
-        }
-
-        function sendManualMessage() {
-            if (!validateInputs()) return;
-
-            const phoneNumber = document.getElementById('phoneNumber').value.trim();
-            const message = document.getElementById('message').value.trim();
-
-            // Clean phone number (remove spaces, dashes, etc.)
-            const cleanNumber = phoneNumber.replace(/[\s-]/g, '');
-            
-            // Encode the message for URL
-            const encodedMessage = encodeURIComponent(message);
-            
-            // Create WhatsApp URL
-            const whatsappUrl = `https://wa.me/${cleanNumber}?text=${encodedMessage}`;
-            
-            // Open WhatsApp in new tab
-            window.open(whatsappUrl, '_blank');
-            
-            showMessage('WhatsApp opened! You can now review and send your message.', 'success');
-        }
-
-        function showMessage(text, type) {
-            const container = document.getElementById('messageContainer');
-            container.textContent = text;
-            container.className = `message-container ${type}`;
-            container.style.display = 'block';
-            
-            // Auto hide after 5 seconds
-            setTimeout(() => {
-                container.style.display = 'none';
-            }, 5000);
-        }
-
-        // Add keyboard shortcut (Enter key) for sending
-        document.getElementById('message').addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' && e.ctrlKey) {
-                const sendOption = document.getElementById('sendOption').value;
-                if (sendOption === 'now') {
-                    sendMessageNow();
-                } else {
-                    sendManualMessage();
-                }
-            }
+        
+        uploadedFiles.push(file);
+      });
+      
+      updateFilePreview();
+    });
+    
+    function updateFilePreview() {
+      filePreview.innerHTML = '';
+      
+      uploadedFiles.forEach((file, index) => {
+        const item = document.createElement('div');
+        item.className = 'file-item';
+        item.innerHTML = `
+          <i class="fas fa-image"></i>
+          <span>${file.name.substring(0, 20)}${file.name.length > 20 ? '...' : ''}</span>
+          <button type="button" onclick="removeFile(${index})"><i class="fas fa-times"></i></button>
+        `;
+        filePreview.appendChild(item);
+      });
+    }
+    
+    window.removeFile = function(index) {
+      uploadedFiles.splice(index, 1);
+      
+      // Update file input
+      const dt = new DataTransfer();
+      uploadedFiles.forEach(file => dt.items.add(file));
+      imageUpload.files = dt.files;
+      
+      updateFilePreview();
+    };
+    
+    // =====================================================
+    // FORM VALIDATION
+    // =====================================================
+    
+    function validateForm() {
+      let isValid = true;
+      
+      // Clear all errors
+      document.querySelectorAll('.error-message').forEach(el => el.classList.remove('show'));
+      document.querySelectorAll('input, select').forEach(el => el.classList.remove('error'));
+      
+      // Check first name
+      const firstName = document.getElementById('firstName');
+      if (!firstName.value.trim()) {
+        firstName.classList.add('error');
+        document.getElementById('firstNameError').classList.add('show');
+        isValid = false;
+      }
+      
+      // Check last name
+      const lastName = document.getElementById('lastName');
+      if (!lastName.value.trim()) {
+        lastName.classList.add('error');
+        document.getElementById('lastNameError').classList.add('show');
+        isValid = false;
+      }
+      
+      // Check phone
+      const phone = document.getElementById('phone');
+      if (!phone.value.trim()) {
+        phone.classList.add('error');
+        document.getElementById('phoneError').classList.add('show');
+        isValid = false;
+      }
+      
+      // Check address
+      const address = document.getElementById('address');
+      if (!address.value.trim()) {
+        address.classList.add('error');
+        document.getElementById('addressError').classList.add('show');
+        isValid = false;
+      }
+      
+      // Check service
+      const service = document.getElementById('service');
+      if (!service.value) {
+        service.classList.add('error');
+        document.getElementById('serviceError').classList.add('show');
+        isValid = false;
+      }
+      
+      // Check time selection
+      if (!selectedDateTime) {
+        document.getElementById('timeError').classList.add('show');
+        isValid = false;
+      }
+      
+      return isValid;
+    }
+    
+    // =====================================================
+    // FORM SUBMISSION - WHATSAPP
+    // =====================================================
+    
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      if (!validateForm()) {
+        return;
+      }
+      
+      const submitBtn = document.getElementById('submitBtn');
+      const originalText = submitBtn.innerHTML;
+      
+      // Get form values
+      const firstName = document.getElementById('firstName').value;
+      const lastName = document.getElementById('lastName').value;
+      const phone = document.getElementById('phone').value;
+      const email = document.getElementById('email').value || 'Non renseigné';
+      const address = document.getElementById('address').value;
+      const service = document.getElementById('service').value;
+      const comments = document.getElementById('comments').value || 'Aucun commentaire';
+      
+      // Generate reference
+      const ref = 'RDV-' + new Date().getFullYear() + '-' + 
+                 Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+      
+      // Current date
+      const now = new Date();
+      const dateStr = now.toLocaleDateString('fr-FR');
+      const timeStr = now.toLocaleTimeString('fr-FR');
+      
+      // Create WhatsApp message
+      let message = `🔔 *NOUVELLE DEMANDE DE RENDEZ-VOUS* 🔔\n\n`;
+      message += `━━━━━━━━━━━━━━━━━━━━━━\n`;
+      message += `*Eco Nettoyage 85*\n`;
+      message += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+      
+      message += `📋 *RÉFÉRENCE* : ${ref}\n`;
+      message += `📅 *DATE* : ${dateStr} à ${timeStr}\n\n`;
+      
+      message += `━━━━━━━━━━━━━━━━━━━━━━\n`;
+      message += `👤 *CLIENT*\n`;
+      message += `━━━━━━━━━━━━━━━━━━━━━━\n`;
+      message += `▪️ *Nom* : ${firstName} ${lastName}\n`;
+      message += `▪️ *Téléphone* : ${phone}\n`;
+      message += `▪️ *Email* : ${email}\n`;
+      message += `▪️ *Adresse* : ${address}\n\n`;
+      
+      message += `━━━━━━━━━━━━━━━━━━━━━━\n`;
+      message += `🔧 *SERVICE*\n`;
+      message += `━━━━━━━━━━━━━━━━━━━━━━\n`;
+      message += `▪️ *Prestation* : ${service}\n`;
+      message += `▪️ *Rendez-vous* : ${selectedDateTime.display}\n\n`;
+      
+      message += `━━━━━━━━━━━━━━━━━━━━━━\n`;
+      message += `📝 *COMMENTAIRES*\n`;
+      message += `━━━━━━━━━━━━━━━━━━━━━━\n`;
+      message += `${comments}\n\n`;
+      
+      if (uploadedFiles.length > 0) {
+        message += `━━━━━━━━━━━━━━━━━━━━━━\n`;
+        message += `🖼️ *PHOTOS* (${uploadedFiles.length})\n`;
+        message += `━━━━━━━━━━━━━━━━━━━━━━\n`;
+        uploadedFiles.forEach((file, index) => {
+          message += `▪️ Photo ${index + 1} : ${file.name}\n`;
         });
-
-        // Initialize
-        toggleManualEntry();
-    </script>
+        message += `\n`;
+      }
+      
+      message += `━━━━━━━━━━━━━━━━━━━━━━\n`;
+      message += `✅ *STATUT* : En attente de confirmation\n`;
+      message += `━━━━━━━━━━━━━━━━━━━━━━\n`;
+      
+      // Encode and open WhatsApp
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappUrl = `https://wa.me/${config.whatsappNumber}?text=${encodedMessage}`;
+      
+      // Show loading
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Ouverture WhatsApp...';
+      submitBtn.disabled = true;
+      
+      // Open WhatsApp
+      window.open(whatsappUrl, '_blank');
+      
+      // Show success
+      setTimeout(() => {
+        submitBtn.innerHTML = '<i class="fas fa-check"></i> Rendez-vous envoyé !';
+        submitBtn.style.background = '#28a745';
+        
+        // Reset form after 3 seconds
+        setTimeout(() => {
+          document.getElementById('bookingForm').reset();
+          selectedDateTime = null;
+          selectedTimeInput.value = '';
+          uploadedFiles = [];
+          filePreview.innerHTML = '';
+          document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+          document.querySelectorAll('.day-card').forEach(c => c.classList.remove('active'));
+          
+          submitBtn.innerHTML = originalText;
+          submitBtn.style.background = '';
+          submitBtn.disabled = false;
+        }, 3000);
+      }, 1000);
+    });
+    
+    // =====================================================
+    // ADD TEST VALUES (REMOVE IN PRODUCTION)
+    // =====================================================
+    
+    // This adds sample data for testing - remove when live
+    window.addEventListener('load', function() {
+      // Uncomment these lines to add test data
+      // document.getElementById('firstName').value = 'Jean';
+      // document.getElementById('lastName').value = 'Dupont';
+      // document.getElementById('phone').value = '0625636643';
+      // document.getElementById('address').value = '123 Rue Example, 85000 La Roche-sur-Yon';
+    });
+  </script>
 </body>
 </html>
