@@ -1,1449 +1,208 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-  <title>Eco Nettoyage 85 · Prendre Rendez-vous | Nettoyage Écologique Vendée</title>
-  
-  <!-- META TAGS -->
-  <meta name="description" content="Prenez rendez-vous en ligne avec Eco Nettoyage 85 pour un nettoyage écologique en Vendée, La Rochelle et Niort. Confirmation immédiate par WhatsApp.">
-  <meta name="keywords" content="rendez-vous nettoyage, réservation en ligne, nettoyage écologique vendée">
-  <meta name="author" content="Eco Nettoyage 85">
-  <meta name="theme-color" content="#1B4D3E">
-  
-  <!-- Font Awesome 6 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- AOS -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  
-  <style>
-    /* =====================================================
-       RENDEZ-VOUS PAGE - DIRECT WHATSAPP INTEGRATION
-       DEVELOPER: S-TECH DIGITAL INK
-       DATE: 2026
-       FULLY RESPONSIVE - MOBILE FIRST APPROACH
-       WHATSAPP: +33 6 25 63 66 43
-       ===================================================== */
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    :root {
-      --primary-deep: #1B4D3E;
-      --primary-sage: #8AA89F;
-      --primary-sand: #E8CAA4;
-      --primary-gold: #D4AF37;
-      --primary-charcoal: #2C3E3D;
-      --primary-white: #FFFFFF;
-      --primary-offwhite: #F9F7F4;
-      --primary-gray: #E5E5E5;
-      --shadow-sm: 0 5px 15px rgba(0,0,0,0.05);
-      --shadow-md: 0 10px 25px rgba(0,0,0,0.1);
-      --shadow-lg: 0 20px 40px rgba(0,0,0,0.15);
-      --gradient-primary: linear-gradient(135deg, #1B4D3E 0%, #2C5A4B 100%);
-      --gradient-gold: linear-gradient(135deg, #D4AF37 0%, #E8CAA4 100%);
-    }
-    
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--primary-offwhite);
-      color: var(--primary-charcoal);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-    
-    /* Mobile First Approach */
-    @media (max-width: 480px) {
-      .container {
-        padding: 0 1rem;
-      }
-    }
-    
-    /* ========== HEADER ========== */
-    .booking-header {
-      background: var(--gradient-primary);
-      padding: 1rem 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: var(--shadow-md);
-    }
-    
-    .booking-header .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    
-    .booking-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-    
-    .logo-icon {
-      width: 40px;
-      height: 40px;
-      background: var(--primary-gold);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transform: rotate(45deg);
-      transition: transform 0.3s ease;
-    }
-    
-    .logo-icon i {
-      transform: rotate(-45deg);
-      font-size: 1.4rem;
-      color: var(--primary-deep);
-    }
-    
-    .logo-text {
-      color: white;
-      font-size: 1.4rem;
-      font-weight: 700;
-      font-family: 'Playfair Display', serif;
-    }
-    
-    @media (min-width: 768px) {
-      .logo-icon {
-        width: 50px;
-        height: 50px;
-      }
-      
-      .logo-icon i {
-        font-size: 1.8rem;
-      }
-      
-      .logo-text {
-        font-size: 1.8rem;
-      }
-    }
-    
-    .logo-text span {
-      color: var(--primary-gold);
-    }
-    
-    .back-home {
-      color: white;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.6rem 1.2rem;
-      background: rgba(255,255,255,0.1);
-      border-radius: 50px;
-      font-size: 0.9rem;
-      transition: all 0.3s ease;
-    }
-    
-    .back-home:hover {
-      background: var(--primary-gold);
-      color: var(--primary-deep);
-    }
-    
-    @media (min-width: 768px) {
-      .back-home {
-        padding: 0.8rem 1.5rem;
-        font-size: 1rem;
-      }
-    }
-    
-    /* ========== MAIN CONTENT ========== */
-    .booking-main {
-      padding: 2rem 0;
-    }
-    
-    @media (min-width: 768px) {
-      .booking-main {
-        padding: 4rem 0;
-      }
-    }
-    
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-      color: var(--primary-deep);
-      line-height: 1.2;
-    }
-    
-    @media (min-width: 768px) {
-      h1 {
-        font-size: 2.8rem;
-      }
-    }
-    
-    .subtitle {
-      font-size: 1rem;
-      color: var(--primary-sage);
-      margin-bottom: 2rem;
-    }
-    
-    @media (min-width: 768px) {
-      .subtitle {
-        font-size: 1.2rem;
-        margin-bottom: 3rem;
-      }
-    }
-    
-    /* ========== BOOKING GRID ========== */
-    .booking-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
-      align-items: start;
-    }
-    
-    @media (min-width: 992px) {
-      .booking-grid {
-        grid-template-columns: 1.2fr 0.8fr;
-        gap: 3rem;
-      }
-    }
-    
-    /* ========== BOOKING FORM ========== */
-    .booking-form-container {
-      background: white;
-      border-radius: 30px;
-      padding: 1.5rem;
-      box-shadow: var(--shadow-lg);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    @media (min-width: 768px) {
-      .booking-form-container {
-        border-radius: 40px;
-        padding: 3rem;
-      }
-    }
-    
-    .booking-form-container::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 5px;
-      background: var(--gradient-gold);
-    }
-    
-    .form-title {
-      font-size: 1.8rem;
-      margin-bottom: 0.3rem;
-    }
-    
-    @media (min-width: 768px) {
-      .form-title {
-        font-size: 2.2rem;
-        margin-bottom: 0.5rem;
-      }
-    }
-    
-    .form-subtitle {
-      color: var(--primary-sage);
-      margin-bottom: 1.5rem;
-      font-size: 0.9rem;
-    }
-    
-    @media (min-width: 768px) {
-      .form-subtitle {
-        margin-bottom: 2rem;
-        font-size: 1rem;
-      }
-    }
-    
-    .form-group {
-      margin-bottom: 1.2rem;
-    }
-    
-    @media (min-width: 768px) {
-      .form-group {
-        margin-bottom: 1.5rem;
-      }
-    }
-    
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
-    
-    @media (min-width: 576px) {
-      .form-row {
-        grid-template-columns: 1fr 1fr;
-        gap: 1.2rem;
-      }
-    }
-    
-    @media (min-width: 768px) {
-      .form-row {
-        gap: 1.5rem;
-      }
-    }
-    
-    label {
-      display: block;
-      margin-bottom: 0.4rem;
-      font-weight: 600;
-      color: var(--primary-deep);
-      font-size: 0.9rem;
-    }
-    
-    @media (min-width: 768px) {
-      label {
-        margin-bottom: 0.5rem;
-        font-size: 0.95rem;
-      }
-    }
-    
-    label i {
-      color: var(--primary-gold);
-      margin-right: 0.5rem;
-    }
-    
-    .required::after {
-      content: '*';
-      color: #e74c3c;
-      margin-left: 4px;
-    }
-    
-    input, select, textarea {
-      width: 100%;
-      padding: 0.8rem 1rem;
-      border: 2px solid transparent;
-      border-radius: 12px;
-      background: var(--primary-offwhite);
-      font-family: 'Poppins', sans-serif;
-      font-size: 0.9rem;
-      transition: all 0.3s ease;
-    }
-    
-    @media (min-width: 768px) {
-      input, select, textarea {
-        padding: 1rem 1.2rem;
-        border-radius: 15px;
-        font-size: 1rem;
-      }
-    }
-    
-    input:focus, select:focus, textarea:focus {
-      outline: none;
-      border-color: var(--primary-gold);
-      background: white;
-      box-shadow: 0 5px 20px rgba(212,175,55,0.1);
-    }
-    
-    input.error, select.error, textarea.error {
-      border-color: #e74c3c;
-    }
-    
-    .error-message {
-      color: #e74c3c;
-      font-size: 0.75rem;
-      margin-top: 0.2rem;
-      display: none;
-    }
-    
-    @media (min-width: 768px) {
-      .error-message {
-        font-size: 0.85rem;
-        margin-top: 0.3rem;
-      }
-    }
-    
-    .error-message.show {
-      display: block;
-    }
-    
-    /* ========== FILE UPLOAD ========== */
-    .file-upload {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      padding: 1.5rem;
-      background: var(--primary-offwhite);
-      border: 2px dashed var(--primary-sage);
-      border-radius: 15px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    
-    @media (min-width: 768px) {
-      .file-upload {
-        padding: 2rem;
-        border-radius: 20px;
-      }
-    }
-    
-    .file-upload:hover {
-      border-color: var(--primary-gold);
-      background: rgba(212,175,55,0.05);
-    }
-    
-    .file-upload i {
-      font-size: 2rem;
-      color: var(--primary-gold);
-      margin-bottom: 0.5rem;
-    }
-    
-    @media (min-width: 768px) {
-      .file-upload i {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-      }
-    }
-    
-    .file-upload p {
-      font-weight: 500;
-      margin-bottom: 0.3rem;
-      font-size: 0.9rem;
-    }
-    
-    @media (min-width: 768px) {
-      .file-upload p {
-        font-size: 1rem;
-      }
-    }
-    
-    .file-upload small {
-      color: var(--primary-sage);
-      font-size: 0.75rem;
-    }
-    
-    @media (min-width: 768px) {
-      .file-upload small {
-        font-size: 0.85rem;
-      }
-    }
-    
-    .file-upload input[type="file"] {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      cursor: pointer;
-    }
-    
-    .file-preview {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.8rem;
-    }
-    
-    @media (min-width: 768px) {
-      .file-preview {
-        gap: 1rem;
-        margin-top: 1rem;
-      }
-    }
-    
-    .file-preview-item {
-      background: var(--primary-offwhite);
-      padding: 0.4rem 0.8rem;
-      border-radius: 50px;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.8rem;
-    }
-    
-    @media (min-width: 768px) {
-      .file-preview-item {
-        padding: 0.5rem 1rem;
-        gap: 0.5rem;
-        font-size: 0.9rem;
-      }
-    }
-    
-    .file-preview-item i {
-      color: var(--primary-gold);
-      font-size: 0.9rem;
-    }
-    
-    .file-preview-item button {
-      background: none;
-      border: none;
-      color: #e74c3c;
-      cursor: pointer;
-      font-size: 0.9rem;
-      margin-left: 0.3rem;
-    }
-    
-    /* ========== AVAILABLE TIMES ========== */
-    .available-times-section {
-      background: white;
-      border-radius: 30px;
-      padding: 1.5rem;
-      box-shadow: var(--shadow-lg);
-    }
-    
-    @media (min-width: 768px) {
-      .available-times-section {
-        border-radius: 40px;
-        padding: 2.5rem;
-      }
-    }
-    
-    .times-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-    
-    @media (min-width: 768px) {
-      .times-header {
-        margin-bottom: 2rem;
-      }
-    }
-    
-    .times-header i {
-      font-size: 1.5rem;
-      color: var(--primary-gold);
-    }
-    
-    @media (min-width: 768px) {
-      .times-header i {
-        font-size: 2rem;
-      }
-    }
-    
-    .times-header h2 {
-      font-size: 1.4rem;
-      margin-bottom: 0.2rem;
-    }
-    
-    @media (min-width: 768px) {
-      .times-header h2 {
-        font-size: 1.8rem;
-      }
-    }
-    
-    .times-header p {
-      color: var(--primary-sage);
-      font-size: 0.85rem;
-    }
-    
-    @media (min-width: 768px) {
-      .times-header p {
-        font-size: 1rem;
-      }
-    }
-    
-    .days-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-      margin-bottom: 1.5rem;
-      max-height: 500px;
-      overflow-y: auto;
-      padding-right: 0.5rem;
-    }
-    
-    @media (min-width: 768px) {
-      .days-grid {
-        gap: 1rem;
-        margin-bottom: 2rem;
-        max-height: 600px;
-      }
-    }
-    
-    /* Custom scrollbar */
-    .days-grid::-webkit-scrollbar {
-      width: 6px;
-    }
-    
-    .days-grid::-webkit-scrollbar-track {
-      background: var(--primary-offwhite);
-      border-radius: 10px;
-    }
-    
-    .days-grid::-webkit-scrollbar-thumb {
-      background: var(--primary-gold);
-      border-radius: 10px;
-    }
-    
-    .day-card {
-      background: var(--primary-offwhite);
-      border-radius: 15px;
-      padding: 1rem;
-      transition: all 0.3s ease;
-    }
-    
-    @media (min-width: 768px) {
-      .day-card {
-        border-radius: 20px;
-        padding: 1.2rem;
-      }
-    }
-    
-    .day-card.active {
-      background: var(--gradient-primary);
-      color: white;
-    }
-    
-    .day-card.active .day-name,
-    .day-card.active .day-date {
-      color: white;
-    }
-    
-    .day-card.active .time-slot {
-      background: rgba(255,255,255,0.2);
-      color: white;
-    }
-    
-    .day-card.active .time-slot:hover,
-    .day-card.active .time-slot.selected {
-      background: var(--primary-gold);
-      color: var(--primary-deep);
-    }
-    
-    .day-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.8rem;
-    }
-    
-    @media (min-width: 768px) {
-      .day-header {
-        margin-bottom: 1rem;
-      }
-    }
-    
-    .day-name {
-      font-weight: 700;
-      font-size: 1rem;
-      color: var(--primary-deep);
-    }
-    
-    @media (min-width: 768px) {
-      .day-name {
-        font-size: 1.2rem;
-      }
-    }
-    
-    .day-date {
-      color: var(--primary-sage);
-      font-size: 0.85rem;
-    }
-    
-    @media (min-width: 768px) {
-      .day-date {
-        font-size: 0.95rem;
-      }
-    }
-    
-    .time-slots {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    
-    @media (min-width: 768px) {
-      .time-slots {
-        gap: 0.8rem;
-      }
-    }
-    
-    .time-slot {
-      padding: 0.4rem 0.8rem;
-      background: white;
-      border-radius: 50px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      border: 1px solid transparent;
-    }
-    
-    @media (min-width: 768px) {
-      .time-slot {
-        padding: 0.5rem 1.2rem;
-        font-size: 0.9rem;
-      }
-    }
-    
-    .time-slot:hover {
-      background: var(--primary-gold);
-      color: var(--primary-deep);
-      transform: translateY(-2px);
-    }
-    
-    .time-slot.selected {
-      background: var(--primary-gold);
-      color: var(--primary-deep);
-      border-color: var(--primary-deep);
-    }
-    
-    .time-slot.disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-      background: var(--primary-gray);
-    }
-    
-    .no-slots {
-      color: var(--primary-sage);
-      font-style: italic;
-      font-size: 0.9rem;
-      padding: 0.5rem 0;
-    }
-    
-    /* ========== BOOKING INFO CARD ========== */
-    .booking-info-card {
-      background: var(--gradient-primary);
-      color: white;
-      border-radius: 15px;
-      padding: 1.2rem;
-      margin-top: 1.5rem;
-    }
-    
-    @media (min-width: 768px) {
-      .booking-info-card {
-        border-radius: 20px;
-        padding: 1.5rem;
-        margin-top: 2rem;
-      }
-    }
-    
-    .booking-info-card h3 {
-      color: white;
-      margin-bottom: 0.8rem;
-      font-size: 1.2rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    @media (min-width: 768px) {
-      .booking-info-card h3 {
-        font-size: 1.3rem;
-        margin-bottom: 1rem;
-      }
-    }
-    
-    .booking-info-card ul {
-      list-style: none;
-    }
-    
-    .booking-info-card li {
-      padding: 0.4rem 0;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      font-size: 0.85rem;
-    }
-    
-    @media (min-width: 768px) {
-      .booking-info-card li {
-        padding: 0.5rem 0;
-        gap: 1rem;
-        font-size: 0.95rem;
-      }
-    }
-    
-    .booking-info-card li i {
-      color: var(--primary-gold);
-    }
-    
-    /* ========== SUBMIT BUTTON ========== */
-    .submit-btn {
-      width: 100%;
-      padding: 1rem;
-      background: var(--gradient-primary);
-      color: white;
-      border: none;
-      border-radius: 50px;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      margin-top: 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.8rem;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    @media (min-width: 768px) {
-      .submit-btn {
-        padding: 1.2rem;
-        font-size: 1.2rem;
-        margin-top: 2rem;
-        gap: 1rem;
-      }
-    }
-    
-    .submit-btn::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.2);
-      transform: translate(-50%, -50%);
-      transition: width 0.6s, height 0.6s;
-    }
-    
-    .submit-btn:hover::before {
-      width: 300px;
-      height: 300px;
-    }
-    
-    .submit-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-lg);
-    }
-    
-    .submit-btn:disabled {
-      opacity: 0.7;
-      cursor: not-allowed;
-      transform: none;
-    }
-    
-    .submit-btn i {
-      font-size: 1.1rem;
-    }
-    
-    @media (min-width: 768px) {
-      .submit-btn i {
-        font-size: 1.3rem;
-      }
-    }
-    
-    /* ========== RESPONSIVE TOUCH TARGETS ========== */
-    @media (max-width: 768px) {
-      .time-slot {
-        padding: 0.6rem 1rem; /* Larger touch target on mobile */
-      }
-      
-      .back-home {
-        padding: 0.8rem 1.2rem; /* Larger touch target */
-      }
-      
-      .submit-btn {
-        padding: 1.2rem; /* Larger touch target */
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Message Scheduler</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        button {
+            background-color: #25D366;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #128C7E;
+        }
+        #sendNow {
+            background-color: #075e54;
+        }
+        .message-container {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
 </head>
 <body>
-  <!-- Header -->
-  <header class="booking-header">
-    <div class="container">
-      <div class="booking-logo">
-        <div class="logo-icon">
-          <i class="fas fa-leaf"></i>
-        </div>
-        <div class="logo-text">Eco<span>Nettoyage85</span></div>
-      </div>
-      <a href="index.html" class="back-home">
-        <i class="fas fa-arrow-left"></i> <span>Retour</span>
-      </a>
+    <h2>WhatsApp Message Manager</h2>
+    
+    <div class="form-group">
+        <label for="phoneNumber">Phone Number (with country code):</label>
+        <input type="text" id="phoneNumber" placeholder="e.g., 1234567890" value="1234567890">
     </div>
-  </header>
 
-  <!-- Main Content -->
-  <main class="booking-main">
-    <div class="container">
-      <h1 data-aos="fade-down">Prendre rendez-vous</h1>
-      <p class="subtitle" data-aos="fade-down" data-aos-delay="50">
-        Remplissez le formulaire et recevez votre confirmation directement sur WhatsApp
-      </p>
-      
-      <div class="booking-grid">
-        <!-- Form Column -->
-        <div class="booking-form-container" data-aos="fade-right">
-          <h2 class="form-title">Informations de réservation</h2>
-          <p class="form-subtitle">Tous les champs sont obligatoires</p>
-          
-          <form id="bookingForm">
-            <div class="form-row">
-              <div class="form-group">
-                <label><i class="fas fa-user"></i> Prénom <span class="required"></span></label>
-                <input type="text" id="firstName" placeholder="Votre prénom" required>
-                <div class="error-message" id="firstNameError">Prénom requis</div>
-              </div>
-              <div class="form-group">
-                <label><i class="fas fa-user"></i> Nom <span class="required"></span></label>
-                <input type="text" id="lastName" placeholder="Votre nom" required>
-                <div class="error-message" id="lastNameError">Nom requis</div>
-              </div>
-            </div>
-            
-            <div class="form-row">
-              <div class="form-group">
-                <label><i class="fas fa-phone"></i> Téléphone <span class="required"></span></label>
-                <input type="tel" id="phone" placeholder="06 25 63 66 43" required>
-                <div class="error-message" id="phoneError">Téléphone requis</div>
-              </div>
-              <div class="form-group">
-                <label><i class="fas fa-envelope"></i> Email</label>
-                <input type="email" id="email" placeholder="votre@email.com">
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <label><i class="fas fa-map-marker-alt"></i> Adresse complète <span class="required"></span></label>
-              <input type="text" id="address" placeholder="Numéro, rue, code postal, ville" required>
-              <div class="error-message" id="addressError">Adresse requise</div>
-            </div>
-            
-            <div class="form-row">
-              <div class="form-group">
-                <label><i class="fas fa-concierge-bell"></i> Service <span class="required"></span></label>
-                <select id="service" required>
-                  <option value="" disabled selected>-- Choisissez --</option>
-                  <option value="Nettoyage de vitres">Nettoyage de vitres</option>
-                  <option value="Nettoyage de terrasse">Nettoyage de terrasse</option>
-                  <option value="Nettoyage de voiture">Nettoyage de voiture</option>
-                  <option value="Nettoyage Airbnb">Nettoyage Airbnb</option>
-                  <option value="Nettoyage maison">Nettoyage maison</option>
-                  <option value="Nettoyage bureaux">Nettoyage bureaux</option>
-                  <option value="Nettoyage canapé">Nettoyage canapé / tapis</option>
-                  <option value="Après travaux">Nettoyage après travaux</option>
-                </select>
-                <div class="error-message" id="serviceError">Service requis</div>
-              </div>
-              <div class="form-group">
-                <label><i class="fas fa-clock"></i> Créneau <span class="required"></span></label>
-                <input type="text" id="selectedTime" placeholder="Sélectionnez un horaire" readonly required>
-                <div class="error-message" id="timeError">Veuillez sélectionner un horaire</div>
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <label><i class="fas fa-camera"></i> Photos (optionnel - max 3)</label>
-              <div class="file-upload" id="fileUpload">
-                <i class="fas fa-cloud-upload-alt"></i>
-                <p>Cliquez ou glissez des photos</p>
-                <small>PNG, JPG - 5 Mo max</small>
-                <input type="file" id="imageUpload" accept="image/jpeg,image/jpg,image/png" multiple>
-              </div>
-              <div class="file-preview" id="filePreview"></div>
-            </div>
-            
-            <div class="form-group">
-              <label><i class="fas fa-comment"></i> Commentaires</label>
-              <textarea id="comments" rows="3" placeholder="Informations complémentaires..."></textarea>
-            </div>
-            
-            <button type="submit" class="submit-btn" id="submitBtn">
-              <i class="fab fa-whatsapp"></i> Confirmer sur WhatsApp
-            </button>
-          </form>
-        </div>
-        
-        <!-- Available Times Column -->
-        <div class="available-times-section" data-aos="fade-left">
-          <div class="times-header">
-            <i class="fas fa-calendar-alt"></i>
-            <div>
-              <h2>Créneaux disponibles</h2>
-              <p>Février - Mars 2026</p>
-            </div>
-          </div>
-          
-          <div class="days-grid" id="daysGrid">
-            <!-- Generated by JavaScript -->
-          </div>
-          
-          <div class="booking-info-card">
-            <h3><i class="fas fa-info-circle"></i> Infos pratiques</h3>
-            <ul>
-              <li><i class="fas fa-check-circle"></i> Confirmation immédiate WhatsApp</li>
-              <li><i class="fas fa-check-circle"></i> Annulation gratuite jusqu'à 2h avant</li>
-              <li><i class="fas fa-check-circle"></i> Intervention 7j/7 de 8h à 20h</li>
-              <li><i class="fas fa-check-circle"></i> Devis inclus dans la confirmation</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+    <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea id="message" placeholder="Type your message here...">Hello! This is a test message.</textarea>
     </div>
-  </main>
 
-  <!-- JavaScript -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    // Initialize AOS
-    AOS.init({ 
-      duration: 600,
-      once: true,
-      disable: 'mobile' // Disable on mobile for better performance
-    });
-    
-    // =====================================================
-    // WHATSAPP CONFIGURATION
-    // =====================================================
-    
-    const config = {
-      whatsappNumber: '33625636643', // +33 6 25 63 66 43 without the '+'
-      maxFiles: 3,
-      maxFileSize: 5 * 1024 * 1024, // 5MB
-      allowedTypes: ['image/jpeg', 'image/jpg', 'image/png']
-    };
-    
-    // =====================================================
-    // SCHEDULE CONFIGURATION - MODIFY THIS OBJECT
-    // Format: 'YYYY-MM-DD': ['HH:MM', 'HH:MM', ...]
-    // Add or remove dates and times as needed
-    // Empty array = no slots available that day
-    // =====================================================
-    
-    const timeSlots = {
-      // February 2026
-      '2026-02-17': ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00'], // Tuesday
-      '2026-02-18': ['09:30', '10:30', '11:30', '14:30', '15:30', '16:30'], // Wednesday
-      '2026-02-19': ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00', '17:00'], // Thursday
-      '2026-02-20': ['09:00', '10:00', '11:00', '14:00', '15:00'], // Friday
-      '2026-02-21': ['09:00', '10:00', '11:00'], // Saturday
-      '2026-02-22': [], // Sunday - Closed
-      '2026-02-23': ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00'], // Monday
-      '2026-02-24': ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00'], // Tuesday
-      '2026-02-25': ['09:30', '10:30', '11:30', '14:30', '15:30'], // Wednesday
-      '2026-02-26': ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00'], // Thursday
-      '2026-02-27': ['09:00', '10:00', '11:00', '14:00', '15:00'], // Friday
-      '2026-02-28': ['09:00', '10:00', '11:00'], // Saturday
-      
-      // March 2026
-      '2026-03-01': [], // Sunday - Closed
-      '2026-03-02': ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00'], // Monday
-      '2026-03-03': ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00'], // Tuesday
-      '2026-03-04': ['09:30', '10:30', '11:30', '14:30', '15:30', '16:30'], // Wednesday
-      '2026-03-05': ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00', '17:00'], // Thursday
-      '2026-03-06': ['09:00', '10:00', '11:00', '14:00', '15:00'], // Friday
-      '2026-03-07': ['09:00', '10:00', '11:00'], // Saturday
-    };
-    
-    // =====================================================
-    // GENERATE DAYS AND TIME SLOTS
-    // =====================================================
-    
-    const daysGrid = document.getElementById('daysGrid');
-    const selectedTimeInput = document.getElementById('selectedTime');
-    let selectedDateTime = null;
-    let uploadedFiles = [];
-    
-    // Sort dates
-    const sortedDates = Object.keys(timeSlots).sort();
-    
-    function getDayName(dateStr) {
-      const date = new Date(dateStr + 'T12:00:00');
-      return date.toLocaleDateString('fr-FR', { weekday: 'long' });
-    }
-    
-    function formatDate(dateStr) {
-      const date = new Date(dateStr + 'T12:00:00');
-      return date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' });
-    }
-    
-    // Generate HTML
-    sortedDates.forEach(dateStr => {
-      const slots = timeSlots[dateStr] || [];
-      const dayName = getDayName(dateStr);
-      const dateFormatted = formatDate(dateStr);
-      
-      const dayCard = document.createElement('div');
-      dayCard.className = 'day-card';
-      dayCard.dataset.date = dateStr;
-      
-      let slotsHtml = '';
-      if (slots.length > 0) {
-        slots.forEach(time => {
-          slotsHtml += `<span class="time-slot" data-time="${time}">${time}</span>`;
+    <div class="form-group">
+        <label for="sendOption">Send Option:</label>
+        <select id="sendOption" onchange="toggleManualEntry()">
+            <option value="now">Send Now</option>
+            <option value="manual">Let me decide when to send</option>
+        </select>
+    </div>
+
+    <div id="manualControls" style="display: none;">
+        <p>Click the button below when you're ready to send the message:</p>
+        <button id="manualSendBtn" onclick="sendManualMessage()">📤 Send Message Now</button>
+    </div>
+
+    <div class="form-group" id="sendNowControls">
+        <button id="sendNow" onclick="sendMessageNow()">📱 Send WhatsApp Message Now</button>
+    </div>
+
+    <div id="messageContainer" class="message-container"></div>
+
+    <script>
+        function toggleManualEntry() {
+            const sendOption = document.getElementById('sendOption').value;
+            const manualControls = document.getElementById('manualControls');
+            const sendNowControls = document.getElementById('sendNowControls');
+            
+            if (sendOption === 'manual') {
+                manualControls.style.display = 'block';
+                sendNowControls.style.display = 'none';
+            } else {
+                manualControls.style.display = 'none';
+                sendNowControls.style.display = 'block';
+            }
+        }
+
+        function validateInputs() {
+            const phoneNumber = document.getElementById('phoneNumber').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!phoneNumber) {
+                showMessage('Please enter a phone number', 'error');
+                return false;
+            }
+
+            if (!message) {
+                showMessage('Please enter a message', 'error');
+                return false;
+            }
+
+            // Basic phone number validation (allowing only digits and + sign)
+            const phoneRegex = /^\+?[\d\s-]+$/;
+            if (!phoneRegex.test(phoneNumber)) {
+                showMessage('Please enter a valid phone number', 'error');
+                return false;
+            }
+
+            return true;
+        }
+
+        function sendMessageNow() {
+            if (!validateInputs()) return;
+
+            const phoneNumber = document.getElementById('phoneNumber').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            // Clean phone number (remove spaces, dashes, etc.)
+            const cleanNumber = phoneNumber.replace(/[\s-]/g, '');
+            
+            // Encode the message for URL
+            const encodedMessage = encodeURIComponent(message);
+            
+            // Create WhatsApp URL
+            const whatsappUrl = `https://wa.me/${cleanNumber}?text=${encodedMessage}`;
+            
+            // Open WhatsApp in new tab
+            window.open(whatsappUrl, '_blank');
+            
+            showMessage('WhatsApp opened! You can now send your message.', 'success');
+        }
+
+        function sendManualMessage() {
+            if (!validateInputs()) return;
+
+            const phoneNumber = document.getElementById('phoneNumber').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            // Clean phone number (remove spaces, dashes, etc.)
+            const cleanNumber = phoneNumber.replace(/[\s-]/g, '');
+            
+            // Encode the message for URL
+            const encodedMessage = encodeURIComponent(message);
+            
+            // Create WhatsApp URL
+            const whatsappUrl = `https://wa.me/${cleanNumber}?text=${encodedMessage}`;
+            
+            // Open WhatsApp in new tab
+            window.open(whatsappUrl, '_blank');
+            
+            showMessage('WhatsApp opened! You can now review and send your message.', 'success');
+        }
+
+        function showMessage(text, type) {
+            const container = document.getElementById('messageContainer');
+            container.textContent = text;
+            container.className = `message-container ${type}`;
+            container.style.display = 'block';
+            
+            // Auto hide after 5 seconds
+            setTimeout(() => {
+                container.style.display = 'none';
+            }, 5000);
+        }
+
+        // Add keyboard shortcut (Enter key) for sending
+        document.getElementById('message').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && e.ctrlKey) {
+                const sendOption = document.getElementById('sendOption').value;
+                if (sendOption === 'now') {
+                    sendMessageNow();
+                } else {
+                    sendManualMessage();
+                }
+            }
         });
-      } else {
-        slotsHtml = '<p class="no-slots">Aucun créneau disponible</p>';
-      }
-      
-      dayCard.innerHTML = `
-        <div class="day-header">
-          <span class="day-name">${dayName}</span>
-          <span class="day-date">${dateFormatted}</span>
-        </div>
-        <div class="time-slots">
-          ${slotsHtml}
-        </div>
-      `;
-      
-      daysGrid.appendChild(dayCard);
-    });
-    
-    // Time slot selection
-    document.querySelectorAll('.time-slot').forEach(slot => {
-      slot.addEventListener('click', function() {
-        // Remove selected from all
-        document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
-        document.querySelectorAll('.day-card').forEach(c => c.classList.remove('active'));
-        
-        // Add selected to this
-        this.classList.add('selected');
-        
-        // Activate parent day
-        const dayCard = this.closest('.day-card');
-        dayCard.classList.add('active');
-        
-        // Store selection
-        const date = dayCard.dataset.date;
-        const time = this.dataset.time;
-        const dateObj = new Date(date + 'T12:00:00');
-        const formattedDate = dateObj.toLocaleDateString('fr-FR', { 
-          weekday: 'long', 
-          day: 'numeric', 
-          month: 'long' 
-        });
-        
-        selectedDateTime = {
-          date: date,
-          time: time,
-          display: `${formattedDate} à ${time}`
-        };
-        
-        selectedTimeInput.value = selectedDateTime.display;
-        
-        // Clear error if any
-        document.getElementById('timeError').classList.remove('show');
-      });
-    });
-    
-    // =====================================================
-    // FILE UPLOAD HANDLING
-    // =====================================================
-    
-    const imageUpload = document.getElementById('imageUpload');
-    const filePreview = document.getElementById('filePreview');
-    const fileUpload = document.getElementById('fileUpload');
-    
-    imageUpload.addEventListener('change', function(e) {
-      const files = Array.from(e.target.files).slice(0, config.maxFiles - uploadedFiles.length);
-      
-      files.forEach(file => {
-        // Check file type
-        if (!config.allowedTypes.includes(file.type)) {
-          alert(`Format non accepté: ${file.name}. Utilisez JPG ou PNG.`);
-          return;
-        }
-        
-        // Check file size
-        if (file.size > config.maxFileSize) {
-          alert(`Fichier trop volumineux: ${file.name}. Maximum 5 Mo.`);
-          return;
-        }
-        
-        uploadedFiles.push(file);
-      });
-      
-      updateFilePreview();
-    });
-    
-    // Drag and drop
-    fileUpload.addEventListener('dragover', (e) => {
-      e.preventDefault();
-      fileUpload.style.borderColor = '#D4AF37';
-      fileUpload.style.background = 'rgba(212,175,55,0.05)';
-    });
-    
-    fileUpload.addEventListener('dragleave', (e) => {
-      e.preventDefault();
-      fileUpload.style.borderColor = '#8AA89F';
-      fileUpload.style.background = '';
-    });
-    
-    fileUpload.addEventListener('drop', (e) => {
-      e.preventDefault();
-      fileUpload.style.borderColor = '#8AA89F';
-      fileUpload.style.background = '';
-      
-      const files = Array.from(e.dataTransfer.files).slice(0, config.maxFiles - uploadedFiles.length);
-      
-      files.forEach(file => {
-        if (config.allowedTypes.includes(file.type) && file.size <= config.maxFileSize) {
-          uploadedFiles.push(file);
-        } else {
-          alert(`Fichier ignoré: ${file.name}. Format ou taille non valide.`);
-        }
-      });
-      
-      updateFilePreview();
-    });
-    
-    function updateFilePreview() {
-      filePreview.innerHTML = '';
-      
-      uploadedFiles.forEach((file, index) => {
-        const preview = document.createElement('div');
-        preview.className = 'file-preview-item';
-        preview.innerHTML = `
-          <i class="fas fa-image"></i>
-          <span>${file.name.substring(0, 15)}${file.name.length > 15 ? '...' : ''}</span>
-          <button type="button" onclick="removeFile(${index})"><i class="fas fa-times"></i></button>
-        `;
-        filePreview.appendChild(preview);
-      });
-    }
-    
-    window.removeFile = function(index) {
-      uploadedFiles.splice(index, 1);
-      
-      // Reset file input
-      const dt = new DataTransfer();
-      uploadedFiles.forEach(file => dt.items.add(file));
-      imageUpload.files = dt.files;
-      
-      updateFilePreview();
-    };
-    
-    // =====================================================
-    // FORM VALIDATION
-    // =====================================================
-    
-    function validateForm() {
-      let isValid = true;
-      
-      // Clear errors
-      document.querySelectorAll('.error-message').forEach(el => el.classList.remove('show'));
-      document.querySelectorAll('input, select').forEach(el => el.classList.remove('error'));
-      
-      // Check required fields
-      const requiredFields = [
-        { id: 'firstName', errorId: 'firstNameError' },
-        { id: 'lastName', errorId: 'lastNameError' },
-        { id: 'phone', errorId: 'phoneError' },
-        { id: 'address', errorId: 'addressError' },
-        { id: 'service', errorId: 'serviceError' }
-      ];
-      
-      requiredFields.forEach(field => {
-        const input = document.getElementById(field.id);
-        if (!input.value || input.value.trim() === '') {
-          input.classList.add('error');
-          document.getElementById(field.errorId).classList.add('show');
-          isValid = false;
-        }
-      });
-      
-      // Check time selection
-      if (!selectedDateTime) {
-        document.getElementById('timeError').classList.add('show');
-        isValid = false;
-      }
-      
-      // Validate phone (flexible French format)
-      const phone = document.getElementById('phone').value.replace(/\s/g, ''); // Remove spaces
-      if (phone && !phone.match(/^(0|\+33|0033)[1-9][0-9]{8}$/)) {
-        document.getElementById('phoneError').textContent = 'Format invalide (ex: 0612345678, +33612345678)';
-        document.getElementById('phoneError').classList.add('show');
-        document.getElementById('phone').classList.add('error');
-        isValid = false;
-      }
-      
-      return isValid;
-    }
-    
-    // =====================================================
-    // SEND TO WHATSAPP - DIRECT MESSAGE
-    // =====================================================
-    
-    document.getElementById('bookingForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      if (!validateForm()) return;
-      
-      const submitBtn = document.getElementById('submitBtn');
-      const originalText = submitBtn.innerHTML;
-      
-      try {
-        // Update button state
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Préparation...';
-        submitBtn.disabled = true;
-        
-        // Get form values
-        const firstName = document.getElementById('firstName').value;
-        const lastName = document.getElementById('lastName').value;
-        const phone = document.getElementById('phone').value;
-        const email = document.getElementById('email').value || 'Non renseigné';
-        const address = document.getElementById('address').value;
-        const service = document.getElementById('service').value;
-        const comments = document.getElementById('comments').value || 'Aucun commentaire';
-        
-        // Generate reference
-        const ref = 'RDV-' + new Date().getFullYear() + '-' + 
-                   Math.floor(Math.random() * 10000).toString().padStart(4, '0');
-        
-        // Get current date and time
-        const now = new Date();
-        const dateStr = now.toLocaleDateString('fr-FR');
-        const timeStr = now.toLocaleTimeString('fr-FR');
-        
-        // =====================================================
-        // CREATE WHATSAPP MESSAGE - PROFESSIONAL FORMAT
-        // =====================================================
-        
-        let message = `🔔 *NOUVELLE DEMANDE DE RENDEZ-VOUS* 🔔\n\n`;
-        message += `━━━━━━━━━━━━━━━━━━━━━━\n`;
-        message += `*Eco Nettoyage 85*\n`;
-        message += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
-        
-        message += `📋 *RÉFÉRENCE* : ${ref}\n`;
-        message += `📅 *DATE* : ${dateStr} à ${timeStr}\n\n`;
-        
-        message += `━━━━━━━━━━━━━━━━━━━━━━\n`;
-        message += `👤 *INFORMATIONS CLIENT*\n`;
-        message += `━━━━━━━━━━━━━━━━━━━━━━\n`;
-        message += `▪️ *Nom* : ${firstName} ${lastName}\n`;
-        message += `▪️ *Téléphone* : ${phone}\n`;
-        message += `▪️ *Email* : ${email}\n`;
-        message += `▪️ *Adresse* : ${address}\n\n`;
-        
-        message += `━━━━━━━━━━━━━━━━━━━━━━\n`;
-        message += `🔧 *DÉTAILS DU SERVICE*\n`;
-        message += `━━━━━━━━━━━━━━━━━━━━━━\n`;
-        message += `▪️ *Prestation* : ${service}\n`;
-        message += `▪️ *Rendez-vous* : ${selectedDateTime.display}\n\n`;
-        
-        message += `━━━━━━━━━━━━━━━━━━━━━━\n`;
-        message += `📝 *COMMENTAIRES*\n`;
-        message += `━━━━━━━━━━━━━━━━━━━━━━\n`;
-        message += `${comments}\n\n`;
-        
-        // Add photos info
-        if (uploadedFiles.length > 0) {
-          message += `━━━━━━━━━━━━━━━━━━━━━━\n`;
-          message += `🖼️ *PHOTOS JOINTES* (${uploadedFiles.length})\n`;
-          message += `━━━━━━━━━━━━━━━━━━━━━━\n`;
-          uploadedFiles.forEach((file, index) => {
-            message += `▪️ Photo ${index + 1} : ${file.name}\n`;
-          });
-          message += `\n`;
-        }
-        
-        message += `━━━━━━━━━━━━━━━━━━━━━━\n`;
-        message += `✅ *STATUT* : En attente de confirmation\n`;
-        message += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
-        message += `_Message généré automatiquement via le système de rendez-vous_\n`;
-        message += `_Eco Nettoyage 85 - Nettoyage écologique professionnel_`;
-        
-        // Encode for WhatsApp
-        const encodedMessage = encodeURIComponent(message);
-        const whatsappUrl = `https://wa.me/${config.whatsappNumber}?text=${encodedMessage}`;
-        
-        // Open WhatsApp
-        window.open(whatsappUrl, '_blank');
-        
-        // Show success
-        submitBtn.innerHTML = '<i class="fas fa-check"></i> Rendez-vous envoyé !';
-        submitBtn.style.background = '#28a745';
-        
-        // Reset form after 3 seconds
-        setTimeout(() => {
-          document.getElementById('bookingForm').reset();
-          selectedDateTime = null;
-          selectedTimeInput.value = '';
-          uploadedFiles = [];
-          filePreview.innerHTML = '';
-          imageUpload.value = ''; // Clear file input
-          
-          document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
-          document.querySelectorAll('.day-card').forEach(c => c.classList.remove('active'));
-          
-          submitBtn.innerHTML = originalText;
-          submitBtn.style.background = '';
-          submitBtn.disabled = false;
-        }, 3000);
-        
-      } catch (error) {
-        console.error('Error:', error);
-        alert('Erreur lors de l\'envoi. Veuillez réessayer.');
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
-      }
-    });
-    
-    // =====================================================
-    // FIXED: Only prevent default on non-input elements
-    // =====================================================
-    
-    document.querySelectorAll('.time-slot, .back-home, .submit-btn, .file-upload').forEach(el => {
-      el.addEventListener('touchstart', (e) => {
-        // Only prevent default on elements that might cause zoom issues
-        // But allow inputs to work normally
-        e.preventDefault();
-      }, { passive: false });
-    });
-    
-    // =====================================================
-    // Live phone formatting
-    // =====================================================
-    
-    document.getElementById('phone').addEventListener('input', function(e) {
-      // Remove all non-digits
-      let value = this.value.replace(/\D/g, '');
-      
-      // Format as French phone number
-      if (value.length > 0) {
-        if (value.startsWith('33')) {
-          // International format
-          value = '+' + value;
-        } else if (!value.startsWith('0') && value.length <= 9) {
-          // Add leading 0 if missing
-          value = '0' + value;
-        }
-      }
-      
-      // Add spaces every 2 digits for display
-      if (value.length > 0) {
-        const digits = value.replace(/\D/g, '');
-        const parts = [];
-        for (let i = 0; i < digits.length; i += 2) {
-          parts.push(digits.substr(i, 2));
-        }
-        this.value = parts.join(' ');
-      }
-    });
-    
-    // =====================================================
-    // INSTRUCTIONS FOR UPDATING SCHEDULE
-    // =====================================================
-    /*
-      TO UPDATE AVAILABLE TIMES:
-      
-      1. Find the 'timeSlots' object at line ~190
-      2. Format: 'YYYY-MM-DD': ['09:00', '10:00', '11:00', ...]
-      3. Examples:
-         - '2026-02-17': ['09:00', '10:00', '11:00', '14:00', '15:00']  (5 slots)
-         - '2026-02-18': ['09:30', '10:30']  (2 slots)
-         - '2026-02-19': []  (no slots, closed)
-      
-      TO UPDATE WHATSAPP NUMBER:
-      - Change 'whatsappNumber' at line ~170
-      - Current number: 33625636643 (+33 6 25 63 66 43)
-    */
-  </script>
+
+        // Initialize
+        toggleManualEntry();
+    </script>
 </body>
 </html>
