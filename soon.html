@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Under Construction · S-Tech Digital Ink</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: #0a0f1a;
+        }
+
+        /* Full-screen slideshow background */
+        .bg-slideshow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+        }
+
+        .bg-slideshow::before,
+        .bg-slideshow::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .bg-slideshow::before {
+            background-image: url('https://images.pexels.com/photos/2166711/pexels-photo-2166711.jpeg?auto=compress&cs=tinysrgb&w=1920');
+            background-size: cover;
+            background-position: center;
+            animation: crossfade 24s infinite;
+            opacity: 0;
+        }
+
+        .bg-slideshow::after {
+            background-image: url('https://images.pexels.com/photos/547116/pexels-photo-547116.jpeg?auto=compress&cs=tinysrgb&w=1920');
+            background-size: cover;
+            background-position: center;
+            animation: crossfade 24s infinite 6s;
+            opacity: 0;
+        }
+
+        .bg-slideshow .bg-1,
+        .bg-slideshow .bg-2,
+        .bg-slideshow .bg-3,
+        .bg-slideshow .bg-4 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            animation: crossfade 24s infinite;
+        }
+
+        .bg-1 {
+            background-image: url('https://images.pexels.com/photos/2387873/pexels-photo-2387873.jpeg?auto=compress&cs=tinysrgb&w=1920');
+            animation-delay: 0s;
+        }
+        .bg-2 {
+            background-image: url('https://images.pexels.com/photos/2063599/pexels-photo-2063599.jpeg?auto=compress&cs=tinysrgb&w=1920');
+            animation-delay: 6s;
+        }
+        .bg-3 {
+            background-image: url('https://images.pexels.com/photos/1673168/pexels-photo-1673168.jpeg?auto=compress&cs=tinysrgb&w=1920');
+            animation-delay: 12s;
+        }
+        .bg-4 {
+            background-image: url('https://images.pexels.com/photos/1796722/pexels-photo-1796722.jpeg?auto=compress&cs=tinysrgb&w=1920');
+            animation-delay: 18s;
+        }
+
+        @keyframes crossfade {
+            0% { opacity: 0; transform: scale(1.1); }
+            8% { opacity: 1; transform: scale(1); }
+            17% { opacity: 1; transform: scale(1); }
+            25% { opacity: 0; transform: scale(0.95); }
+            100% { opacity: 0; transform: scale(1.1); }
+        }
+
+        /* Dark overlay for text contrast */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(0,10,20,0.6) 0%, rgba(0,5,15,0.85) 100%);
+            z-index: 1;
+        }
+
+        /* Main content - perfectly centered */
+        .content {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        /* Focal card */
+        .card {
+            max-width: 950px;
+            width: 100%;
+            background: rgba(10, 15, 25, 0.5);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 200, 120, 0.25);
+            border-radius: 48px;
+            padding: 3rem 2rem;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+            text-align: center;
+            color: white;
+            animation: appear 1s ease-out;
+        }
+
+        @keyframes appear {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* S-Tech Digital Ink branding */
+        .agency {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            padding: 0.5rem 2rem;
+            background: linear-gradient(135deg, #ff8a5c20, #b83b5e20);
+            border: 1px solid #ffb45e60;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            font-weight: 500;
+            color: #ffdbb5;
+            backdrop-filter: blur(5px);
+        }
+
+        .agency strong {
+            color: #ffb45e;
+            font-weight: 700;
+        }
+
+        /* Main message - FOCAL POINT */
+        .main-message {
+            margin: 1rem 0 2rem;
+        }
+
+        .line1 {
+            font-size: clamp(1.8rem, 6vw, 3rem);
+            font-weight: 400;
+            color: #ffffffdd;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        .line2 {
+            font-size: clamp(2.5rem, 9vw, 5rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, #ffe6b0, #ffb47b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0.5rem 0;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+
+        .line3 {
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            font-weight: 300;
+            color: #ffdbb5;
+            letter-spacing: 2px;
+        }
+
+        /* Typing animation */
+        .typing-section {
+            margin: 2.5rem 0;
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .typing-label {
+            font-size: 1.5rem;
+            color: #ffffffcc;
+            font-weight: 300;
+        }
+
+        .typing-text {
+            font-size: clamp(1.4rem, 4vw, 2.2rem);
+            font-weight: 600;
+            color: #ffd966;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.5rem 1.2rem;
+            border-radius: 60px;
+            border-left: 4px solid #ffa55c;
+            min-width: 250px;
+            display: inline-block;
+        }
+
+        .typing-cursor {
+            display: inline-block;
+            width: 4px;
+            height: 2.2rem;
+            background: #ffa55c;
+            margin-left: 5px;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Come back later message */
+        .comeback {
+            font-size: clamp(1.3rem, 4vw, 2rem);
+            color: #ffffff;
+            margin: 2rem 0 1.5rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #ffb97830, #ff7e5f30);
+            padding: 1rem 2rem;
+            border-radius: 60px;
+            display: inline-block;
+            border: 1px solid #ffb45e80;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Progress indicator */
+        .progress-wrapper {
+            max-width: 500px;
+            margin: 2rem auto 1rem;
+        }
+
+        .progress-labels {
+            display: flex;
+            justify-content: space-between;
+            color: #ffdbb5;
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 200, 100, 0.3);
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ffb56b, #ff8a5c, #c45b8d);
+            border-radius: 20px;
+            animation: progress 1.8s ease-out forwards;
+            box-shadow: 0 0 15px #ff9f4b;
+        }
+
+        @keyframes progress {
+            0% { width: 0%; }
+            100% { width: 85%; }
+        }
+
+        /* Simple contact button */
+        .contact-btn {
+            display: inline-block;
+            margin: 2.5rem 0 0.5rem;
+            padding: 1rem 3rem;
+            background: transparent;
+            border: 2px solid #ffb45e;
+            border-radius: 60px;
+            color: #ffb45e;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: #ffb45e;
+            color: #0a0f1a;
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px #ff8a5c80;
+        }
+
+        /* Footer */
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .card {
+                padding: 2rem 1.5rem;
+                border-radius: 36px;
+            }
+            
+            .agency {
+                font-size: 1rem;
+                padding: 0.4rem 1.2rem;
+            }
+            
+            .typing-section {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            
+            .typing-text {
+                min-width: auto;
+                width: 100%;
+            }
+            
+            .comeback {
+                padding: 0.8rem 1.5rem;
+            }
+            
+            .contact-btn {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .card {
+                padding: 1.5rem 1rem;
+            }
+            
+            .line2 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background images from internet -->
+    <div class="bg-slideshow">
+        <div class="bg-1"></div>
+        <div class="bg-2"></div>
+        <div class="bg-3"></div>
+        <div class="bg-4"></div>
+    </div>
+    <div class="overlay"></div>
+
+    <!-- Main content -->
+    <div class="content">
+        <div class="card">
+            <!-- Agency signature -->
+            <div class="agency">
+                <span>⚡ <strong>S-TECH DIGITAL INK</strong> ⚡</span>
+            </div>
+
+            <!-- FOCAL MESSAGE - PAGE UNDER CONSTRUCTION -->
+            <div class="main-message">
+                <div class="line1">🚧 THIS PAGE IS</div>
+                <div class="line2">UNDER CONSTRUCTION</div>
+                <div class="line3">by S-Tech Digital Ink</div>
+            </div>
+
+            <!-- Dynamic typing animation -->
+            <div class="typing-section">
+                <span class="typing-label">✦</span>
+                <span id="typingAnimation" class="typing-text">Building something amazing</span>
+                <span class="typing-cursor"></span>
+            </div>
+
+            <!-- COME BACK LATER - prominent -->
+            <div class="comeback">
+                ⏰ PLEASE COME BACK LATER ⏰
+            </div>
+
+            <!-- Simple progress bar -->
+            <div class="progress-wrapper">
+                <div class="progress-labels">
+                    <span>IN PROGRESS</span>
+                    <span>85%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+
+            <!-- Optional contact button (clean and simple) -->
+            <a href="#" class="contact-btn">📧 NOTIFY ME</a>
+        </div>
+
+        <div class="footer">
+            © 2026 S-Tech Digital Ink · All Rights Reserved
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // Clean typing animation - nothing to configure
+            const phrases = [
+                "Building something amazing",
+                "Crafting code with passion",
+                "Designing your experience",
+                "Innovation in progress",
+                "Almost there...",
+                "Great things coming soon",
+                "Pixel perfect development",
+                "Creating magic"
+            ];
+            
+            let index = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            const element = document.getElementById('typingAnimation');
+            
+            function typeEffect() {
+                const currentPhrase = phrases[index];
+                
+                if (isDeleting) {
+                    element.textContent = currentPhrase.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    element.textContent = currentPhrase.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+                
+                if (!isDeleting && charIndex === currentPhrase.length) {
+                    isDeleting = true;
+                    setTimeout(typeEffect, 2000);
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    index = (index + 1) % phrases.length;
+                    setTimeout(typeEffect, 500);
+                } else {
+                    setTimeout(typeEffect, isDeleting ? 40 : 80);
+                }
+            }
+            
+            // Start animation
+            typeEffect();
+        })();
+    </script>
+</body>
+</html>
