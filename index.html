@@ -1477,12 +1477,13 @@
       IMAGE PLACEMENT INSTRUCTIONS
       ======================================================
       
-      SLIDESHOW IMAGES (5 images):
-      1. airbnd.webp - Location Airbnb/meublé
-      2. maison.jpg - Maison/propriété
-      3. terrasse.webp - Terrasse/balcon
-      4. vitres.jpg - Nettoyage vitres
-      5. voiture.jpg - Nettoyage voiture
+      SLIDESHOW IMAGES (6 images now including log1.jpg):
+      1. log1.jpg - Logo/brand image with overlay text
+      2. airbnd.webp - Location Airbnb/meublé
+      3. maison.jpg - Maison/propriété
+      4. terrasse.webp - Terrasse/balcon
+      5. vitres.jpg - Nettoyage vitres
+      6. voiture.jpg - Nettoyage voiture
       
       To replace images, add them to your /images/ folder and update the src attributes in the slideshow section below.
       
@@ -1538,8 +1539,23 @@
   <section id="accueil" class="hero-slideshow">
     <div class="slideshow-container" id="slideshow">
       
-      <!-- SLIDE 1: airbnd.webp -->
+      <!-- SLIDE 1: log1.jpg - NEW IMAGE ADDED FIRST -->
       <div class="slide active" id="slide1">
+        <!-- === NEW IMAGE: log1.jpg added before all slideshow images === -->
+        <img src="log1.jpg" alt="Eco Nettoyage 85 - Logo et identité" class="slide-image" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #1B4D3E 0%, #D4AF37 100%)';">
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <span class="slide-subtitle">Eco-Nettoyage85</span>
+          <h2 class="slide-title">© 2026 Eco Nettoyage 85<br>Intérieur & Extérieur</h2>
+          <p class="slide-description">Expert en nettoyage écologique depuis 2019 ! Produits certifiés bio et intervention rapide.</p>
+          <a href="rendezvous.html" class="btn btn-secondary">
+            <i class="fas fa-calendar-check"></i> Prendre rendez-vous
+          </a>
+        </div>
+      </div>
+      
+      <!-- SLIDE 2: airbnd.webp -->
+      <div class="slide" id="slide2">
         <!-- === IMAGE PLACEMENT: Replace src with actual image path === -->
         <img src="airbnd.webp" alt="Nettoyage Airbnb professionnel" class="slide-image" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #1B4D3E 0%, #8AA89F 100%)';">
         <div class="slide-overlay"></div>
@@ -1553,8 +1569,8 @@
         </div>
       </div>
       
-      <!-- SLIDE 2: maison.jpg -->
-      <div class="slide" id="slide2">
+      <!-- SLIDE 3: maison.jpg -->
+      <div class="slide" id="slide3">
         <!-- === IMAGE PLACEMENT: Replace src with actual image path === -->
         <img src="maison.jpg" alt="Nettoyage maison écologique" class="slide-image" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #8AA89F 0%, #E8CAA4 100%)';">
         <div class="slide-overlay"></div>
@@ -1568,8 +1584,8 @@
         </div>
       </div>
       
-      <!-- SLIDE 3: terrasse.webp -->
-      <div class="slide" id="slide3">
+      <!-- SLIDE 4: terrasse.webp -->
+      <div class="slide" id="slide4">
         <!-- === IMAGE PLACEMENT: Replace src with actual image path === -->
         <img src="terrasse.webp" alt="Nettoyage terrasse haute pression" class="slide-image" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #E8CAA4 0%, #D4AF37 100%)';">
         <div class="slide-overlay"></div>
@@ -1583,8 +1599,8 @@
         </div>
       </div>
       
-      <!-- SLIDE 4: vitres.jpg -->
-      <div class="slide" id="slide4">
+      <!-- SLIDE 5: vitres.jpg -->
+      <div class="slide" id="slide5">
         <!-- === IMAGE PLACEMENT: Replace src with actual image path === -->
         <img src="vitres.jpg" alt="Nettoyage vitres sans traces" class="slide-image" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #D4AF37 0%, #1B4D3E 100%)';">
         <div class="slide-overlay"></div>
@@ -1598,8 +1614,8 @@
         </div>
       </div>
       
-      <!-- SLIDE 5: voiture.jpg -->
-      <div class="slide" id="slide5">
+      <!-- SLIDE 6: voiture.jpg -->
+      <div class="slide" id="slide6">
         <!-- === IMAGE PLACEMENT: Replace src with actual image path === -->
         <img src="voiture.jpg" alt="Nettoyage voiture intérieur extérieur" class="slide-image" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #2C3E3D 0%, #8AA89F 100%)';">
         <div class="slide-overlay"></div>
@@ -1612,20 +1628,7 @@
           </a>
         </div>
       </div>
-      <!-- SLIDE 7: log1.jpg -->
-      <div class="slide" id="slide5">
-        <!-- === IMAGE PLACEMENT: Replace src with actual image path === -->
-        <img src="log1.jpg" alt="Nettoyage voiture intérieur extérieur" class="slide-image" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #2C3E3D 0%, #8AA89F 100%)';">
-        <div class="slide-overlay"></div>
-        <div class="slide-content">
-          <span class="slide-subtitle">Eco-Nettoyage85</span>
-          <h2 class="slide-title">© 2026 Eco Nettoyage 85<br>Intérieur & Extérieur</h2>
-          <p class="slide-description">Expert en nettoyage écologique depuis 2019 !</p>
-          <a href="rendezvous.html" class="btn btn-secondary">
-            <i class="fas fa-calendar-check"></i> Prendre rendez-vous
-          </a>
-        </div>
-      </div>
+      
       <!-- Slideshow Navigation -->
       <div class="slideshow-nav">
         <button id="prevSlide"><i class="fas fa-chevron-left"></i></button>
@@ -1638,6 +1641,7 @@
         <span class="dot" data-index="2"></span>
         <span class="dot" data-index="3"></span>
         <span class="dot" data-index="4"></span>
+        <span class="dot" data-index="5"></span>
       </div>
     </div>
     
@@ -2013,8 +2017,8 @@
           </div>
           
           <div class="social-links-premium">
-            <a href="#" class="social-link-premium"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-link-premium"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/184SqjKcDH/?mibextid=wwXIfr" class="social-link-premium" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/econettoyage85/" class="social-link-premium" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
             <a href="#" class="social-link-premium"><i class="fab fa-linkedin-in"></i></a>
             <a href="#" class="social-link-premium"><i class="fab fa-tiktok"></i></a>
           </div>
@@ -2088,8 +2092,8 @@
           </p>
           <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
             <a href="https://wa.me/33625636645" style="color: var(--primary-sand); font-size: 1.5rem;" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            <a href="#" style="color: var(--primary-sand); font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
-            <a href="#" style="color: var(--primary-sand); font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/184SqjKcDH/?mibextid=wwXIfr" style="color: var(--primary-sand); font-size: 1.5rem;" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/econettoyage85/" style="color: var(--primary-sand); font-size: 1.5rem;" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
         
@@ -2415,12 +2419,13 @@
     IMAGE PLACEMENT SUMMARY
     ======================================================
     
-    SLIDESHOW IMAGES (5 total):
-    - Line ~500: <img src="airbnd.webp" ...>
-    - Line ~522: <img src="maison.jpg" ...>
-    - Line ~544: <img src="terrasse.webp" ...>
-    - Line ~566: <img src="vitres.jpg" ...>
-    - Line ~588: <img src="voiture.jpg" ...>
+    SLIDESHOW IMAGES (6 total including new log1.jpg):
+    - Line ~500: <img src="log1.jpg" ...> (NEW FIRST SLIDE)
+    - Line ~522: <img src="airbnd.webp" ...>
+    - Line ~544: <img src="maison.jpg" ...>
+    - Line ~566: <img src="terrasse.webp" ...>
+    - Line ~588: <img src="vitres.jpg" ...>
+    - Line ~610: <img src="voiture.jpg" ...>
     
     SERVICE SECTION IMAGES (6 placeholders):
     - Lines ~806-810: Service 1 (vitres)
@@ -2430,8 +2435,9 @@
     - Lines ~882-886: Service 5 (maison)
     - Lines ~901-905: Service 6 (bureaux)
     
-    Simply uncomment the <img> tags and add your image paths.
-    The gradients will show as fallback if images are missing.
+    SOCIAL MEDIA LINKS UPDATED (2 locations):
+    - Lines ~974-977: Contact section social links
+    - Lines ~1065-1067: Footer social links
     
     ======================================================
     PROFESSIONAL REDESIGN COMPLETE
@@ -2442,4 +2448,3 @@
   -->
 </body>
 </html>
-
