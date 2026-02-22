@@ -793,52 +793,8 @@
   <!-- ===== INFORMATION SECTION ===== -->
   <section id="information" class="devis-main">
     <div class="container">
-      <h2 class="section-title" data-aos="fade-down">Comment ça fonctionne ?</h2>
       
-      <!-- Process Steps -->
-      <div class="process-steps" data-aos="fade-up">
-        <div class="step">
-          <div class="step-number">1</div>
-          <h3>Demande en ligne</h3>
-          <p>Remplissez le formulaire ci-dessous</p>
-        </div>
-        <div class="step">
-          <div class="step-number">2</div>
-          <h3>Échange personnalisé</h3>
-          <p>Nous vous contactons pour préciser vos besoins</p>
-        </div>
-        <div class="step">
-          <div class="step-number">3</div>
-          <h3>Devis sous 1h</h3>
-          <p>Recevez votre devis détaillé par email</p>
-        </div>
-      </div>
-      
-      <!-- Info Cards -->
-      <div class="info-grid" data-aos="fade-up">
-        <div class="info-card">
-          <i class="fas fa-clock"></i>
-          <h3>Réponse express</h3>
-          <p>Devis envoyé sous 1h maximum</p>
-        </div>
-        <div class="info-card">
-          <i class="fas fa-file-invoice"></i>
-          <h3>Devis détaillé</h3>
-          <p>Prix unitaires, quantité, total</p>
-        </div>
-        <div class="info-card">
-          <i class="fas fa-leaf"></i>
-          <h3>Produits écologiques</h3>
-          <p>Certifiés bio et respectueux</p>
-        </div>
-        <div class="info-card">
-          <i class="fas fa-shield-alt"></i>
-          <h3>Assuré</h3>
-          <p>Travail garanti et assuré</p>
-        </div>
-      </div>
-      
-      <!-- ===== FORMULAIRE DE DEMANDE DE DEVIS ===== -->
+      <!-- ===== FORMULAIRE DE DEMANDE DE DEVIS (placé en premier) ===== -->
       <!-- Sections supprimées : Tarifs indicatifs, Nos disponibilités, Autres prestations -->
       
       <div id="devis-form" class="devis-form-section" data-aos="zoom-in">
@@ -873,6 +829,52 @@
               <i class="fas fa-lock"></i> Vos données sont confidentielles. En cliquant, vous ouvrez votre client mail pour envoyer la demande.
             </div>
           </form>
+        </div>
+      </div>
+      
+      <!-- ===== COMMENT ÇA FONCTIONNE ? ===== -->
+      <h2 class="section-title" data-aos="fade-down">Comment ça fonctionne ?</h2>
+      
+      <!-- Process Steps -->
+      <div class="process-steps" data-aos="fade-up">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Demande en ligne</h3>
+          <p>Remplissez le formulaire ci-dessus</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Échange personnalisé</h3>
+          <p>Nous vous contactons pour préciser vos besoins</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Devis sous 1h</h3>
+          <p>Recevez votre devis détaillé par email</p>
+        </div>
+      </div>
+      
+      <!-- Info Cards -->
+      <div class="info-grid" data-aos="fade-up">
+        <div class="info-card">
+          <i class="fas fa-clock"></i>
+          <h3>Réponse express</h3>
+          <p>Devis envoyé sous 1h maximum</p>
+        </div>
+        <div class="info-card">
+          <i class="fas fa-file-invoice"></i>
+          <h3>Devis détaillé</h3>
+          <p>Prix unitaires, quantité, total</p>
+        </div>
+        <div class="info-card">
+          <i class="fas fa-leaf"></i>
+          <h3>Produits écologiques</h3>
+          <p>Certifiés bio et respectueux</p>
+        </div>
+        <div class="info-card">
+          <i class="fas fa-shield-alt"></i>
+          <h3>Assuré</h3>
+          <p>Travail garanti et assuré</p>
         </div>
       </div>
       
@@ -922,7 +924,6 @@
     AOS.init({
       duration: 800,
       once: true,
-      disable: 'mobile' // Optionnel : désactive AOS sur mobile pour de meilleures performances, mais on le garde pour la beauté
     });
   </script>
 </body>
