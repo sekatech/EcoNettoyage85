@@ -24,6 +24,7 @@
     /* =====================================================
        DEVIS PERSONNALISÉ - PAGE D'INFORMATION
        Design premium - Formulaire de demande de devis
+       ENTIÈREMENT RESPONSIVE MOBILE
        ===================================================== */
     
     * {
@@ -50,6 +51,8 @@
       font-family: 'Poppins', sans-serif;
       background-color: var(--primary-offwhite);
       color: var(--primary-charcoal);
+      overflow-x: hidden;
+      width: 100%;
     }
     
     .container {
@@ -58,13 +61,26 @@
       padding: 0 3rem;
     }
     
-    @media (max-width: 768px) {
+    /* ===== RESPONSIVE CONTAINER ===== */
+    @media (max-width: 1024px) {
       .container {
-        padding: 0 1.5rem;
+        padding: 0 2rem;
       }
     }
     
-    /* ===== HERO SECTION WITH log1.jpg ===== */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 1.2rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 1rem;
+      }
+    }
+    
+    /* ===== HERO SECTION ===== */
     .devis-hero {
       background: linear-gradient(135deg, #1B4D3E 0%, #2C3E3D 100%);
       padding: 4rem 0;
@@ -117,6 +133,19 @@
       color: white;
       margin-bottom: 1.5rem;
       font-weight: 800;
+      line-height: 1.2;
+    }
+    
+    @media (max-width: 768px) {
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero-text h1 {
+        font-size: 2rem;
+      }
     }
     
     .hero-text .highlight {
@@ -130,6 +159,12 @@
       line-height: 1.6;
     }
     
+    @media (max-width: 768px) {
+      .hero-text p {
+        font-size: 1.1rem;
+      }
+    }
+    
     .hero-buttons {
       display: flex;
       gap: 1.5rem;
@@ -138,6 +173,18 @@
     
     @media (max-width: 992px) {
       .hero-buttons {
+        justify-content: center;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero-buttons {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+      }
+      .hero-buttons .btn {
+        width: 100%;
         justify-content: center;
       }
     }
@@ -154,6 +201,15 @@
       text-decoration: none;
       border: 2px solid transparent;
       cursor: pointer;
+      white-space: nowrap;
+    }
+    
+    @media (max-width: 480px) {
+      .btn {
+        white-space: normal;
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+      }
     }
     
     .btn-primary {
@@ -186,6 +242,13 @@
       justify-content: center;
       font-size: 1.2rem;
       padding: 1.2rem;
+    }
+    
+    @media (max-width: 480px) {
+      .btn-submit {
+        font-size: 1.1rem;
+        padding: 1rem;
+      }
     }
     
     .btn-submit:hover {
@@ -229,9 +292,24 @@
       }
     }
     
+    @media (max-width: 480px) {
+      .logo-frame {
+        width: 200px;
+        height: 200px;
+        border-width: 5px;
+        padding: 1rem;
+      }
+    }
+    
     /* ===== MAIN CONTENT ===== */
     .devis-main {
       padding: 5rem 0;
+    }
+    
+    @media (max-width: 768px) {
+      .devis-main {
+        padding: 3rem 0;
+      }
     }
     
     .section-title {
@@ -240,6 +318,19 @@
       margin-bottom: 3rem;
       text-align: center;
       position: relative;
+    }
+    
+    @media (max-width: 768px) {
+      .section-title {
+        font-size: 2rem;
+        margin-bottom: 2.5rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .section-title {
+        font-size: 1.8rem;
+      }
     }
     
     .section-title::after {
@@ -254,6 +345,14 @@
       border-radius: 4px;
     }
     
+    @media (max-width: 480px) {
+      .section-title::after {
+        width: 70px;
+        height: 3px;
+        bottom: -10px;
+      }
+    }
+    
     /* Info Cards */
     .info-grid {
       display: grid;
@@ -262,12 +361,32 @@
       margin: 4rem 0;
     }
     
+    @media (max-width: 768px) {
+      .info-grid {
+        gap: 1.5rem;
+        margin: 3rem 0;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .info-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
+    
     .info-card {
       background: var(--primary-offwhite);
       border-radius: 20px;
       padding: 2rem;
       text-align: center;
       border-bottom: 4px solid var(--primary-gold);
+    }
+    
+    @media (max-width: 480px) {
+      .info-card {
+        padding: 1.5rem;
+      }
     }
     
     .info-card i {
@@ -281,13 +400,34 @@
       margin-bottom: 0.5rem;
     }
     
-    /* ===== NOUVEAU FORMULAIRE DE DEMANDE DE DEVIS ===== */
+    /* ===== FORMULAIRE DE DEMANDE DE DEVIS ===== */
     .devis-form-section {
       background: var(--gradient-primary);
       border-radius: 50px;
       padding: 4rem;
       margin: 4rem 0;
       color: white;
+    }
+    
+    @media (max-width: 1024px) {
+      .devis-form-section {
+        padding: 3rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .devis-form-section {
+        padding: 2rem;
+        border-radius: 40px;
+        margin: 3rem 0;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .devis-form-section {
+        padding: 1.5rem 1rem;
+        border-radius: 30px;
+      }
     }
     
     .form-container {
@@ -301,6 +441,19 @@
       box-shadow: var(--shadow-lg);
     }
     
+    @media (max-width: 768px) {
+      .form-container {
+        padding: 2rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .form-container {
+        padding: 1.5rem;
+        border-radius: 30px;
+      }
+    }
+    
     .form-title {
       text-align: center;
       font-size: 2.2rem;
@@ -308,11 +461,30 @@
       color: var(--primary-gold);
     }
     
+    @media (max-width: 768px) {
+      .form-title {
+        font-size: 1.9rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .form-title {
+        font-size: 1.7rem;
+      }
+    }
+    
     .form-subtitle {
       text-align: center;
       margin-bottom: 2.5rem;
       color: var(--primary-sand);
       font-size: 1.1rem;
+    }
+    
+    @media (max-width: 480px) {
+      .form-subtitle {
+        font-size: 1rem;
+        margin-bottom: 1.8rem;
+      }
     }
     
     .form-group {
@@ -349,6 +521,13 @@
       transition: all 0.3s ease;
     }
     
+    @media (max-width: 480px) {
+      .form-control {
+        padding: 0.9rem 1rem;
+        font-size: 0.95rem;
+      }
+    }
+    
     .form-control:focus {
       outline: none;
       border-color: var(--primary-gold);
@@ -378,7 +557,7 @@
       color: var(--primary-gold);
     }
     
-    /* Process Steps (conservées) */
+    /* Process Steps */
     .process-steps {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -389,6 +568,7 @@
     @media (max-width: 768px) {
       .process-steps {
         grid-template-columns: 1fr;
+        gap: 2rem;
       }
     }
     
@@ -406,7 +586,7 @@
       color: var(--primary-gold);
     }
     
-    @media (max-width: 768px) {
+    @media (max-width: 992px) {
       .step:not(:last-child)::after {
         display: none;
       }
@@ -426,12 +606,122 @@
       color: var(--primary-deep);
     }
     
+    @media (max-width: 480px) {
+      .step-number {
+        width: 70px;
+        height: 70px;
+        font-size: 1.8rem;
+      }
+    }
+    
+    /* CTA Section */
+    .cta-section {
+      background: white;
+      border-radius: 40px;
+      padding: 4rem;
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+      margin: 4rem 0;
+    }
+    
+    @media (max-width: 768px) {
+      .cta-section {
+        padding: 2.5rem 1.5rem;
+        border-radius: 30px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .cta-section {
+        padding: 2rem 1rem;
+      }
+    }
+    
+    .cta-section h2 {
+      font-size: 2.5rem;
+      color: var(--primary-deep);
+      margin-bottom: 1rem;
+    }
+    
+    @media (max-width: 768px) {
+      .cta-section h2 {
+        font-size: 1.8rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .cta-section h2 {
+        font-size: 1.5rem;
+      }
+    }
+    
+    .cta-section p {
+      font-size: 1.2rem;
+      color: var(--primary-sage);
+      margin-bottom: 2rem;
+    }
+    
+    @media (max-width: 768px) {
+      .cta-section p {
+        font-size: 1rem;
+      }
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    @media (max-width: 480px) {
+      .cta-buttons {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+    
+    .btn-large {
+      padding: 1.5rem 3rem;
+      font-size: 1.3rem;
+    }
+    
+    @media (max-width: 768px) {
+      .btn-large {
+        padding: 1.2rem 2rem;
+        font-size: 1.1rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .btn-large {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+    
+    .btn-whatsapp {
+      background: #25D366;
+      color: white;
+    }
+    
+    .btn-whatsapp:hover {
+      background: #20BD5C;
+      transform: translateY(-3px);
+    }
+    
     /* Footer */
     .premium-footer {
       background: var(--primary-deep);
       color: var(--primary-sand);
       padding: 3rem 0;
       margin-top: 3rem;
+    }
+    
+    @media (max-width: 768px) {
+      .premium-footer {
+        padding: 2rem 0;
+      }
     }
     
     .footer-content {
@@ -442,11 +732,25 @@
       gap: 2rem;
     }
     
+    @media (max-width: 768px) {
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+      }
+    }
+    
     .footer-social a {
       color: white;
       font-size: 1.5rem;
       margin-left: 1rem;
       transition: color 0.3s ease;
+    }
+    
+    @media (max-width: 768px) {
+      .footer-social a {
+        margin: 0 0.5rem;
+      }
     }
     
     .footer-social a:hover {
@@ -491,7 +795,7 @@
     <div class="container">
       <h2 class="section-title" data-aos="fade-down">Comment ça fonctionne ?</h2>
       
-      <!-- Process Steps (conservées) -->
+      <!-- Process Steps -->
       <div class="process-steps" data-aos="fade-up">
         <div class="step">
           <div class="step-number">1</div>
@@ -510,7 +814,7 @@
         </div>
       </div>
       
-      <!-- Info Cards (conservées) -->
+      <!-- Info Cards -->
       <div class="info-grid" data-aos="fade-up">
         <div class="info-card">
           <i class="fas fa-clock"></i>
@@ -534,7 +838,7 @@
         </div>
       </div>
       
-      <!-- ===== NOUVEAU FORMULAIRE DE DEMANDE DE DEVIS ===== -->
+      <!-- ===== FORMULAIRE DE DEMANDE DE DEVIS ===== -->
       <!-- Sections supprimées : Tarifs indicatifs, Nos disponibilités, Autres prestations -->
       
       <div id="devis-form" class="devis-form-section" data-aos="zoom-in">
@@ -572,15 +876,15 @@
         </div>
       </div>
       
-      <!-- Call to Action (légèrement modifiée pour rester cohérente) -->
-      <div class="cta-section" style="background: white; border-radius: 40px; padding: 4rem; text-align: center; box-shadow: var(--shadow-lg); margin: 4rem 0;" data-aos="zoom-in">
-        <h2 style="font-size: 2.5rem; color: var(--primary-deep); margin-bottom: 1rem;">Besoin d'un conseil immédiat ?</h2>
-        <p style="font-size: 1.2rem; color: var(--primary-sage); margin-bottom: 2rem;">Contactez-nous directement par téléphone ou WhatsApp</p>
-        <div class="cta-buttons" style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
-          <a href="tel:+33625636643" class="btn btn-primary btn-large" style="padding: 1.5rem 3rem; font-size: 1.3rem;">
+      <!-- Call to Action -->
+      <div class="cta-section" data-aos="zoom-in">
+        <h2>Besoin d'un conseil immédiat ?</h2>
+        <p>Contactez-nous directement par téléphone ou WhatsApp</p>
+        <div class="cta-buttons">
+          <a href="tel:+33625636643" class="btn btn-primary btn-large">
             <i class="fas fa-phone-alt"></i> 06 25 63 66 43
           </a>
-          <a href="https://wa.me/33625636643?text=Bonjour%2C%20je%20souhaite%20des%20informations%20sur%20un%20devis%20personnalisé" class="btn btn-whatsapp btn-large" style="background: #25D366; color: white; padding: 1.5rem 3rem; font-size: 1.3rem; border-radius: 60px; text-decoration: none; display: inline-flex; align-items: center; gap: 0.8rem;" target="_blank">
+          <a href="https://wa.me/33625636643?text=Bonjour%2C%20je%20souhaite%20des%20informations%20sur%20un%20devis%20personnalisé" class="btn btn-whatsapp btn-large" target="_blank">
             <i class="fab fa-whatsapp"></i> WhatsApp
           </a>
         </div>
@@ -617,7 +921,8 @@
   <script>
     AOS.init({
       duration: 800,
-      once: true
+      once: true,
+      disable: 'mobile' // Optionnel : désactive AOS sur mobile pour de meilleures performances, mais on le garde pour la beauté
     });
   </script>
 </body>
