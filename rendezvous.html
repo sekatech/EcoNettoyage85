@@ -24,8 +24,8 @@
     /* =====================================================
        RENDEZ-VOUS PAGE - VERSION SIMPLIFIÉE
        MODIFICATIONS :
-       1. Jours avec créneaux : affichage "matin / soir" séparé (sauf dimanche : seulement soir)
-       2. Heure souhaitée remplacée par boutons radio Matin / Soir (plus simple)
+       1. Jours avec créneaux : affichage "Matin" / "Soir" (sans les heures)
+       2. Heure souhaitée : champ texte libre pour que le client tape son heure
        3. Jour souhaité correspond exactement aux jours disponibles (Lun, Mer, Jeu, Ven, Dim)
        ===================================================== */
     
@@ -368,40 +368,14 @@
       display: block;
     }
     
-    /* === NOUVEAU : BOUTONS RADIO POUR MATIN / SOIR === */
-    .time-radio-group {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-      margin-top: 0.5rem;
-      background: var(--primary-offwhite);
-      padding: 1rem 1.5rem;
-      border-radius: 50px;
-    }
-    .time-radio-group.disabled-radio {
-      opacity: 0.6;
-      pointer-events: none;
-    }
-    .radio-option {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      cursor: pointer;
-    }
-    .radio-option input[type="radio"] {
-      width: 18px;
-      height: 18px;
-      accent-color: var(--primary-gold);
-      margin: 0;
-    }
-    .radio-option span {
-      font-weight: 500;
-      color: var(--primary-deep);
-    }
-    .radio-hint {
+    /* Petit rappel des créneaux sous l'heure */
+    .time-hint {
       font-size: 0.85rem;
       color: var(--primary-sage);
-      margin-left: 0.5rem;
+      margin-top: 0.3rem;
+    }
+    .time-hint i {
+      color: var(--primary-gold);
     }
     
     /* File Upload */
@@ -477,7 +451,7 @@
       font-size: 0.9rem;
     }
     
-    /* Available days with time slots - matin/soir séparés */
+    /* Available days with time slots - MATIN / SOIR sans les heures */
     .available-days-section {
       background: white;
       border-radius: 30px;
@@ -534,7 +508,7 @@
       color: var(--primary-gold);
     }
     
-    /* Day cards with time slots - affichage matin/soir */
+    /* Day cards with time slots - seulement "Matin" / "Soir" (sans les heures) */
     .day-schedule-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -693,11 +667,6 @@
       .info-note li {
         font-size: 0.9rem;
       }
-      .time-radio-group {
-        border-radius: 30px;
-        padding: 0.8rem 1rem;
-        gap: 1rem;
-      }
     }
   </style>
 </head>
@@ -718,7 +687,7 @@
           </span>
         </p>
         <p style="font-size: 1.1rem; margin-top: 0.5rem;">
-          <i class="fas fa-clock"></i> Créneaux : matin (8h-12h) • soir (17h-19h) sauf dimanche soir uniquement
+          <i class="fas fa-clock"></i> Créneaux : Matin • Soir (sauf dimanche soir uniquement)
         </p>
       </div>
     </div>
@@ -804,31 +773,24 @@
                 <label><i class="fas fa-calendar-week"></i> Jour souhaité <span class="required"></span></label>
                 <select id="preferredDay" required>
                   <option value="" disabled selected>-- Choisissez un jour --</option>
-                  <option value="Lundi">Lundi (matin 8h-12h / soir 17h-19h)</option>
-                  <option value="Mercredi">Mercredi (matin 8h-12h / soir 17h-19h)</option>
-                  <option value="Jeudi">Jeudi (matin 8h-12h / soir 17h-19h)</option>
-                  <option value="Vendredi">Vendredi (matin 8h-12h / soir 17h-19h)</option>
-                  <option value="Dimanche">Dimanche (soir 17h-19h uniquement)</option>
+                  <option value="Lundi">Lundi (Matin / Soir)</option>
+                  <option value="Mercredi">Mercredi (Matin / Soir)</option>
+                  <option value="Jeudi">Jeudi (Matin / Soir)</option>
+                  <option value="Vendredi">Vendredi (Matin / Soir)</option>
+                  <option value="Dimanche">Dimanche (Soir uniquement)</option>
                 </select>
                 <div class="error-message" id="dayError">Veuillez choisir un jour</div>
               </div>
             </div>
             
-            <!-- HEURE SOUHAITÉE : remplacée par des RADIOS MATIN / SOIR (simple) -->
+            <!-- HEURE SOUHAITÉE : champ texte simple pour que le client tape l'heure (pas de sélecteur) -->
             <div class="form-group">
-              <label><i class="fas fa-clock"></i> Horaire souhaité <span class="required"></span></label>
-              <div class="time-radio-group" id="timeRadioGroup">
-                <label class="radio-option">
-                  <input type="radio" name="timeSlot" value="Matin (8h-12h)" required> <span>Matin <span class="radio-hint">(8h-12h)</span></span>
-                </label>
-                <label class="radio-option">
-                  <input type="radio" name="timeSlot" value="Soir (17h-19h)" required> <span>Soir <span class="radio-hint">(17h-19h)</span></span>
-                </label>
+              <label><i class="fas fa-clock"></i> Heure souhaitée <span class="required"></span></label>
+              <input type="text" id="preferredTime" placeholder="ex: 9h30, 10h, 17h15" required>
+              <div class="time-hint">
+                <i class="fas fa-info-circle"></i> Indiquez l'heure précise (ex: 9h30, 17h). Merci de respecter les créneaux Matin (8h-12h) ou Soir (17h-19h). Dimanche soir seulement.
               </div>
-              <div class="error-message" id="timeError">Veuillez choisir matin ou soir</div>
-              <small style="color: var(--primary-sage); display: block; margin-top: 0.3rem;">
-                <i class="fas fa-info-circle"></i> Pour le dimanche, sélectionnez "Soir" uniquement.
-              </small>
+              <div class="error-message" id="timeError">Veuillez indiquer l'heure souhaitée</div>
             </div>
             
             <div class="form-group">
@@ -853,7 +815,7 @@
           </form>
         </div>
         
-        <!-- RIGHT COLUMN : DISPONIBILITÉS (matin/soir distincts) -->
+        <!-- RIGHT COLUMN : DISPONIBILITÉS (Matin / Soir sans heures) -->
         <div class="available-days-section" data-aos="fade-left">
           <div class="days-header">
             <i class="fas fa-calendar-alt"></i>
@@ -863,7 +825,7 @@
             </div>
           </div>
           
-          <!-- Days with time slots : affichage matin / soir séparé (dimanche soir seulement) -->
+          <!-- Days with time slots : affichage "Matin" / "Soir" (dimanche soir seulement) -->
           <div class="days-list">
             <p><i class="fas fa-hand-point-right"></i> Jours avec créneaux :</p>
             
@@ -872,46 +834,46 @@
               <div class="day-schedule-card">
                 <div class="day-name"><i class="fas fa-sun"></i> Lundi</div>
                 <div class="time-slots">
-                  <div class="time-slot"><i class="fas fa-clock"></i><span>Matin 8h - 12h</span></div>
-                  <div class="time-slot"><i class="fas fa-clock"></i><span>Soir 17h - 19h</span></div>
+                  <div class="time-slot"><i class="fas fa-clock"></i><span>Matin</span></div>
+                  <div class="time-slot"><i class="fas fa-clock"></i><span>Soir</span></div>
                 </div>
               </div>
               <!-- MERCREDI : matin + soir -->
               <div class="day-schedule-card">
                 <div class="day-name"><i class="fas fa-cloud"></i> Mercredi</div>
                 <div class="time-slots">
-                  <div class="time-slot"><i class="fas fa-clock"></i><span>Matin 8h - 12h</span></div>
-                  <div class="time-slot"><i class="fas fa-clock"></i><span>Soir 17h - 19h</span></div>
+                  <div class="time-slot"><i class="fas fa-clock"></i><span>Matin</span></div>
+                  <div class="time-slot"><i class="fas fa-clock"></i><span>Soir</span></div>
                 </div>
               </div>
               <!-- JEUDI : matin + soir -->
               <div class="day-schedule-card">
                 <div class="day-name"><i class="fas fa-calendar-day"></i> Jeudi</div>
                 <div class="time-slots">
-                  <div class="time-slot"><i class="fas fa-clock"></i><span>Matin 8h - 12h</span></div>
-                  <div class="time-slot"><i class="fas fa-clock"></i><span>Soir 17h - 19h</span></div>
+                  <div class="time-slot"><i class="fas fa-clock"></i><span>Matin</span></div>
+                  <div class="time-slot"><i class="fas fa-clock"></i><span>Soir</span></div>
                 </div>
               </div>
               <!-- VENDREDI : matin + soir -->
               <div class="day-schedule-card">
                 <div class="day-name"><i class="fas fa-glass-cheers"></i> Vendredi</div>
                 <div class="time-slots">
-                  <div class="time-slot"><i class="fas fa-clock"></i><span>Matin 8h - 12h</span></div>
-                  <div class="time-slot"><i class="fas fa-clock"></i><span>Soir 17h - 19h</span></div>
+                  <div class="time-slot"><i class="fas fa-clock"></i><span>Matin</span></div>
+                  <div class="time-slot"><i class="fas fa-clock"></i><span>Soir</span></div>
                 </div>
               </div>
               <!-- DIMANCHE : soir uniquement -->
               <div class="day-schedule-card">
                 <div class="day-name"><i class="fas fa-star"></i> Dimanche</div>
                 <div class="time-slots">
-                  <div class="time-slot"><i class="fas fa-clock"></i><span>Soir 17h - 19h (uniquement)</span></div>
+                  <div class="time-slot"><i class="fas fa-clock"></i><span>Soir (uniquement)</span></div>
                 </div>
               </div>
             </div>
             
             <div class="time-note">
               <i class="fas fa-info-circle"></i>
-              Sélectionnez votre jour et choisissez Matin ou Soir dans le formulaire.
+              Choisissez votre jour et saisissez l'heure précise dans le formulaire (ex: 9h30, 17h).
             </div>
           </div>
           
@@ -950,7 +912,7 @@
     };
 
     // =====================================================
-    // GESTION FICHIERS (inchangé)
+    // GESTION FICHIERS
     // =====================================================
     const imageUpload = document.getElementById('imageUpload');
     const filePreview = document.getElementById('filePreview');
@@ -998,34 +960,6 @@
     };
 
     // =====================================================
-    // GESTION DYNAMIQUE : si Dimanche est choisi, désactiver le bouton "Matin"
-    // =====================================================
-    const daySelect = document.getElementById('preferredDay');
-    const radioMatin = document.querySelector('input[type="radio"][value="Matin (8h-12h)"]');
-    const radioSoir = document.querySelector('input[type="radio"][value="Soir (17h-19h)"]');
-    const radioGroup = document.getElementById('timeRadioGroup');
-
-    function updateRadioForSunday() {
-      if (daySelect.value === 'Dimanche') {
-        // Désactiver l'option matin et la décocher si elle était sélectionnée
-        radioMatin.disabled = true;
-        if (radioMatin.checked) radioMatin.checked = false;
-        // Option soir reste active
-        radioSoir.disabled = false;
-        // Ajouter un visuel (optionnel)
-        radioGroup.classList.add('disabled-radio');
-      } else {
-        radioMatin.disabled = false;
-        radioSoir.disabled = false;
-        radioGroup.classList.remove('disabled-radio');
-      }
-    }
-
-    daySelect.addEventListener('change', updateRadioForSunday);
-    // Exécuter au chargement au cas où une valeur serait pré-sélectionnée
-    updateRadioForSunday();
-
-    // =====================================================
     // VALIDATION FORMULAIRE
     // =====================================================
     function validateForm() {
@@ -1033,7 +967,6 @@
       document.querySelectorAll('.error-message').forEach(el => el.classList.remove('show'));
       document.querySelectorAll('input, select').forEach(el => el.classList.remove('error'));
 
-      // Champs texte
       const requiredFields = [
         { id: 'firstName', errorId: 'firstNameError' },
         { id: 'lastName', errorId: 'lastNameError' },
@@ -1041,7 +974,8 @@
         { id: 'email', errorId: 'emailError' },
         { id: 'address', errorId: 'addressError' },
         { id: 'service', errorId: 'serviceError' },
-        { id: 'preferredDay', errorId: 'dayError' }
+        { id: 'preferredDay', errorId: 'dayError' },
+        { id: 'preferredTime', errorId: 'timeError' }
       ];
 
       requiredFields.forEach(field => {
@@ -1053,7 +987,7 @@
         }
       });
 
-      // Validation email
+      // Email validation
       const email = document.getElementById('email');
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (email.value && !emailRegex.test(email.value)) {
@@ -1063,12 +997,8 @@
         isValid = false;
       }
 
-      // Validation radio time
-      const timeSelected = document.querySelector('input[name="timeSlot"]:checked');
-      if (!timeSelected) {
-        document.getElementById('timeError').classList.add('show');
-        isValid = false;
-      }
+      // Heure : validation simple non vide (pas de format strict, le client tape comme il veut)
+      // On accepte tout texte non vide.
 
       return isValid;
     }
@@ -1096,7 +1026,7 @@
         const address = document.getElementById('address').value.trim();
         const service = document.getElementById('service').value;
         const preferredDay = document.getElementById('preferredDay').value;
-        const timeSlot = document.querySelector('input[name="timeSlot"]:checked').value; // Matin ou Soir
+        const preferredTime = document.getElementById('preferredTime').value.trim();
         const comments = document.getElementById('comments').value.trim() || 'aucun commentaire';
 
         // Référence unique
@@ -1104,7 +1034,7 @@
                     Math.floor(Math.random() * 10000).toString().padStart(4, '0');
 
         // Construction sujet et corps
-        const subject = `Rendez-vous ${ref} - ${firstName} ${lastName} - ${preferredDay} ${timeSlot}`;
+        const subject = `Rendez-vous ${ref} - ${firstName} ${lastName} - ${preferredDay} à ${preferredTime}`;
 
         let body = `NOUVELLE DEMANDE DE RENDEZ-VOUS\n`;
         body += `================================\n`;
@@ -1119,7 +1049,7 @@
         body += `📅 RENDEZ-VOUS SOUHAITÉ\n`;
         body += `Service : ${service}\n`;
         body += `Jour : ${preferredDay}\n`;
-        body += `Horaire : ${timeSlot}\n\n`;
+        body += `Heure : ${preferredTime}\n\n`;
         body += `📝 COMMENTAIRES\n${comments}\n\n`;
         body += `📸 PHOTOS : ${uploadedFiles.length} fichier(s) joint (envoyés manuellement si besoin)\n\n`;
         body += `================================\n`;
@@ -1143,7 +1073,6 @@
           submitBtn.innerHTML = originalHTML;
           submitBtn.style.background = '';
           submitBtn.disabled = false;
-          updateRadioForSunday(); // remettre l'état radio par défaut
         }, 4000);
 
       } catch (error) {
