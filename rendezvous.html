@@ -20,14 +20,13 @@
   <!-- AOS -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   
-  <!-- Flatpickr for time picker (lightweight and mobile friendly) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-  
   <style>
     /* =====================================================
-       RENDEZ-VOUS PAGE - AVEC CRÉNEAUX HORAIRES
-       Jours disponibles avec horaires : Lun, Mer, Jeu, Ven, Dim
-       Champ pour saisir l'heure souhaitée
+       RENDEZ-VOUS PAGE - VERSION SIMPLIFIÉE
+       MODIFICATIONS :
+       1. Jours avec créneaux : affichage "matin / soir" séparé (sauf dimanche : seulement soir)
+       2. Heure souhaitée remplacée par boutons radio Matin / Soir (plus simple)
+       3. Jour souhaité correspond exactement aux jours disponibles (Lun, Mer, Jeu, Ven, Dim)
        ===================================================== */
     
     * {
@@ -369,19 +368,40 @@
       display: block;
     }
     
-    /* Time picker styling */
-    .time-picker-wrapper {
-      position: relative;
+    /* === NOUVEAU : BOUTONS RADIO POUR MATIN / SOIR === */
+    .time-radio-group {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+      background: var(--primary-offwhite);
+      padding: 1rem 1.5rem;
+      border-radius: 50px;
     }
-    
-    .time-picker-wrapper i {
-      position: absolute;
-      right: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--primary-gold);
+    .time-radio-group.disabled-radio {
+      opacity: 0.6;
       pointer-events: none;
-      z-index: 2;
+    }
+    .radio-option {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      cursor: pointer;
+    }
+    .radio-option input[type="radio"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--primary-gold);
+      margin: 0;
+    }
+    .radio-option span {
+      font-weight: 500;
+      color: var(--primary-deep);
+    }
+    .radio-hint {
+      font-size: 0.85rem;
+      color: var(--primary-sage);
+      margin-left: 0.5rem;
     }
     
     /* File Upload */
@@ -457,7 +477,7 @@
       font-size: 0.9rem;
     }
     
-    /* Available days with time slots */
+    /* Available days with time slots - matin/soir séparés */
     .available-days-section {
       background: white;
       border-radius: 30px;
@@ -514,7 +534,7 @@
       color: var(--primary-gold);
     }
     
-    /* Day cards with time slots */
+    /* Day cards with time slots - affichage matin/soir */
     .day-schedule-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -673,15 +693,20 @@
       .info-note li {
         font-size: 0.9rem;
       }
+      .time-radio-group {
+        border-radius: 30px;
+        padding: 0.8rem 1rem;
+        gap: 1rem;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- ===== NEW SECTION WITH log1.jpg IMAGE ===== -->
+  <!-- ===== SECTION AVEC IMAGE log1.jpg ===== -->
   <section class="brand-image-section">
     <div class="brand-image-container">
       <div class="brand-logo-wrapper" data-aos="zoom-in">
-        <!-- log1.jpg image added here -->
+        <!-- log1.jpg image -->
         <img src="log1.jpg" alt="Eco Nettoyage 85 - Logo officiel" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'180\' height=\'180\' viewBox=\'0 0 100 100\'%3E%3Ccircle cx=\'50\' cy=\'50\' r=\'45\' fill=\'%231B4D3E\'/%3E%3Ctext x=\'50\' y=\'70\' font-size=\'60\' text-anchor=\'middle\' fill=\'%23D4AF37\' dominant-baseline=\'middle\'%3E🍃%3C/text%3E%3C/svg%3E';">
       </div>
       <div class="brand-text-wrapper" data-aos="fade-left">
@@ -689,11 +714,11 @@
         <p>
           <i class="fas fa-calendar-check"></i> Disponible cette semaine :
           <span class="availability-badge">
-            <i class="fas fa-clock"></i> Mar, Mer, Ven, 
+            <i class="fas fa-clock"></i> Lun, Mer, Jeu, Ven, Dim
           </span>
         </p>
         <p style="font-size: 1.1rem; margin-top: 0.5rem;">
-          <i class="fas fa-clock"></i> Créneaux horaires : 9h00 - 10h00 • 17h00 - 19h00
+          <i class="fas fa-clock"></i> Créneaux : matin (8h-12h) • soir (17h-19h) sauf dimanche soir uniquement
         </p>
       </div>
     </div>
@@ -779,27 +804,31 @@
                 <label><i class="fas fa-calendar-week"></i> Jour souhaité <span class="required"></span></label>
                 <select id="preferredDay" required>
                   <option value="" disabled selected>-- Choisissez un jour --</option>
-                  <option value="Lundi">mardi (8h-12h, 14h-19h)</option>
-                  <option value="Mercredi">Mercredi (8h-12h, 14h-19h)</option>
-                  <option value="Jeudi">Jeudi (8h-12h, 14h-19h)</option>
-                  <option value="Vendredi">Vendredi (8h-12h, 14h-19h)</option>
-                  <option value="Dimanche">Dimanche (8h-12h)</option>
+                  <option value="Lundi">Lundi (matin 8h-12h / soir 17h-19h)</option>
+                  <option value="Mercredi">Mercredi (matin 8h-12h / soir 17h-19h)</option>
+                  <option value="Jeudi">Jeudi (matin 8h-12h / soir 17h-19h)</option>
+                  <option value="Vendredi">Vendredi (matin 8h-12h / soir 17h-19h)</option>
+                  <option value="Dimanche">Dimanche (soir 17h-19h uniquement)</option>
                 </select>
                 <div class="error-message" id="dayError">Veuillez choisir un jour</div>
               </div>
             </div>
             
-            <!-- NEW: Time input field with time picker -->
+            <!-- HEURE SOUHAITÉE : remplacée par des RADIOS MATIN / SOIR (simple) -->
             <div class="form-group">
-              <label><i class="fas fa-clock"></i> Heure souhaitée <span class="required"></span></label>
-              <div class="time-picker-wrapper">
-                <input type="text" id="preferredTime" placeholder="ex: 10h30 ou 15h45" required>
-                <i class="far fa-clock"></i>
+              <label><i class="fas fa-clock"></i> Horaire souhaité <span class="required"></span></label>
+              <div class="time-radio-group" id="timeRadioGroup">
+                <label class="radio-option">
+                  <input type="radio" name="timeSlot" value="Matin (8h-12h)" required> <span>Matin <span class="radio-hint">(8h-12h)</span></span>
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="timeSlot" value="Soir (17h-19h)" required> <span>Soir <span class="radio-hint">(17h-19h)</span></span>
+                </label>
               </div>
+              <div class="error-message" id="timeError">Veuillez choisir matin ou soir</div>
               <small style="color: var(--primary-sage); display: block; margin-top: 0.3rem;">
-                <i class="fas fa-info-circle"></i> Créneaux disponibles : 9h-12h et 17h-19h
+                <i class="fas fa-info-circle"></i> Pour le dimanche, sélectionnez "Soir" uniquement.
               </small>
-              <div class="error-message" id="timeError">Veuillez indiquer l'heure souhaitée</div>
             </div>
             
             <div class="form-group">
@@ -824,7 +853,7 @@
           </form>
         </div>
         
-        <!-- RIGHT COLUMN : AVAILABLE DAYS WITH TIME SLOTS -->
+        <!-- RIGHT COLUMN : DISPONIBILITÉS (matin/soir distincts) -->
         <div class="available-days-section" data-aos="fade-left">
           <div class="days-header">
             <i class="fas fa-calendar-alt"></i>
@@ -834,100 +863,55 @@
             </div>
           </div>
           
-          <!-- Days with time slots - MODIFY THESE DIRECTLY -->
+          <!-- Days with time slots : affichage matin / soir séparé (dimanche soir seulement) -->
           <div class="days-list">
             <p><i class="fas fa-hand-point-right"></i> Jours avec créneaux :</p>
             
             <div class="day-schedule-grid">
-              <!-- LUNDI -->
+              <!-- LUNDI : matin + soir -->
               <div class="day-schedule-card">
-                <div class="day-name">
-                  <i class="fas fa-sun"></i> Lundi
-                </div>
+                <div class="day-name"><i class="fas fa-sun"></i> Lundi</div>
                 <div class="time-slots">
-                  <div class="time-slot">
-                    <i class="fas fa-clock"></i>
-                    <span>8h00 - 12h00</span>
-                  </div>
-                  <div class="time-slot">
-                    <i class="fas fa-clock"></i>
-                    <span>14h00 - 19h00</span>
-                  </div>
+                  <div class="time-slot"><i class="fas fa-clock"></i><span>Matin 8h - 12h</span></div>
+                  <div class="time-slot"><i class="fas fa-clock"></i><span>Soir 17h - 19h</span></div>
                 </div>
               </div>
-              
-              <!-- MERCREDI -->
+              <!-- MERCREDI : matin + soir -->
               <div class="day-schedule-card">
-                <div class="day-name">
-                  <i class="fas fa-cloud"></i> Mercredi
-                </div>
+                <div class="day-name"><i class="fas fa-cloud"></i> Mercredi</div>
                 <div class="time-slots">
-                  <div class="time-slot">
-                    <i class="fas fa-clock"></i>
-                    <span>8h00 - 12h00</span>
-                  </div>
-                  <div class="time-slot">
-                    <i class="fas fa-clock"></i>
-                    <span>14h00 - 19h00</span>
-                  </div>
+                  <div class="time-slot"><i class="fas fa-clock"></i><span>Matin 8h - 12h</span></div>
+                  <div class="time-slot"><i class="fas fa-clock"></i><span>Soir 17h - 19h</span></div>
                 </div>
               </div>
-              
-              <!-- JEUDI -->
+              <!-- JEUDI : matin + soir -->
               <div class="day-schedule-card">
-                <div class="day-name">
-                  <i class="fas fa-calendar-day"></i> Jeudi
-                </div>
+                <div class="day-name"><i class="fas fa-calendar-day"></i> Jeudi</div>
                 <div class="time-slots">
-                  <div class="time-slot">
-                    <i class="fas fa-clock"></i>
-                    <span>8h00 - 12h00</span>
-                  </div>
-                  <div class="time-slot">
-                    <i class="fas fa-clock"></i>
-                    <span>14h00 - 19h00</span>
-                  </div>
+                  <div class="time-slot"><i class="fas fa-clock"></i><span>Matin 8h - 12h</span></div>
+                  <div class="time-slot"><i class="fas fa-clock"></i><span>Soir 17h - 19h</span></div>
                 </div>
               </div>
-              
-              <!-- VENDREDI -->
+              <!-- VENDREDI : matin + soir -->
               <div class="day-schedule-card">
-                <div class="day-name">
-                  <i class="fas fa-glass-cheers"></i> Vendredi
-                </div>
+                <div class="day-name"><i class="fas fa-glass-cheers"></i> Vendredi</div>
                 <div class="time-slots">
-                  <div class="time-slot">
-                    <i class="fas fa-clock"></i>
-                    <span>8h00 - 12h00</span>
-                  </div>
-                  <div class="time-slot">
-                    <i class="fas fa-clock"></i>
-                    <span>14h00 - 19h00</span>
-                  </div>
+                  <div class="time-slot"><i class="fas fa-clock"></i><span>Matin 8h - 12h</span></div>
+                  <div class="time-slot"><i class="fas fa-clock"></i><span>Soir 17h - 19h</span></div>
                 </div>
               </div>
-              
-              <!-- DIMANCHE -->
+              <!-- DIMANCHE : soir uniquement -->
               <div class="day-schedule-card">
-                <div class="day-name">
-                  <i class="fas fa-star"></i> Dimanche
-                </div>
+                <div class="day-name"><i class="fas fa-star"></i> Dimanche</div>
                 <div class="time-slots">
-                  <div class="time-slot">
-                    <i class="fas fa-clock"></i>
-                    <span>8h00 - 12h00</span>
-                  </div>
-                  <div class="time-slot">
-                    <i class="fas fa-clock"></i>
-                    <span>14h00 - 19h00</span>
-                  </div>
+                  <div class="time-slot"><i class="fas fa-clock"></i><span>Soir 17h - 19h (uniquement)</span></div>
                 </div>
               </div>
             </div>
             
             <div class="time-note">
               <i class="fas fa-info-circle"></i>
-              Sélectionnez votre jour et saisissez l'heure souhaitée dans le formulaire.
+              Sélectionnez votre jour et choisissez Matin ou Soir dans le formulaire.
             </div>
           </div>
           
@@ -947,63 +931,33 @@
 
   <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/fr.js"></script>
   
   <script>
-    // Initialize AOS
-    AOS.init({ 
-      duration: 800, 
-      once: true,
-      disable: 'mobile' // Better performance on mobile
-    });
-    
-    // Initialize time picker (mobile friendly)
-    flatpickr("#preferredTime", {
-      enableTime: true,
-      noCalendar: true,
-      dateFormat: "H:i",
-      time_24hr: true,
-      minuteIncrement: 15,
-      minTime: "08:00",
-      maxTime: "19:00",
-      disable: [
-        function(time) {
-          // Disable lunch break 12:00-14:00
-          const hour = time.getHours();
-          return hour >= 12 && hour < 14;
-        }
-      ],
-      locale: "fr",
-      placeholder: "Choisissez une heure",
-      onReady: function(selectedDates, dateStr, instance) {
-        instance.input.setAttribute('placeholder', 'ex: 10:30 ou 15:45');
-      }
-    });
-    
+    // =====================================================
+    // INITIALISATION
+    // =====================================================
+    AOS.init({ duration: 800, once: true, disable: 'mobile' });
+
     // =====================================================
     // CONFIGURATION
     // =====================================================
-    
     const CONFIG = {
       recipientEmail: 'neb.globalconsultancy@gmail.com',
-      bccEmail: '',  // Ajoutez un email pour copie si besoin
+      bccEmail: '',
       maxFiles: 3,
       maxFileSize: 5 * 1024 * 1024, // 5 Mo
       allowedTypes: ['image/jpeg', 'image/jpg', 'image/png']
     };
-    
+
     // =====================================================
-    // GESTION FICHIERS
+    // GESTION FICHIERS (inchangé)
     // =====================================================
-    
     const imageUpload = document.getElementById('imageUpload');
     const filePreview = document.getElementById('filePreview');
     let uploadedFiles = [];
-    
+
     imageUpload.addEventListener('change', function(e) {
       const files = Array.from(e.target.files).slice(0, CONFIG.maxFiles);
-      
       files.forEach(file => {
         if (!CONFIG.allowedTypes.includes(file.type)) {
           alert(`Format non accepté: ${file.name}. Utilisez JPG ou PNG.`);
@@ -1015,14 +969,12 @@
         }
         uploadedFiles.push(file);
       });
-      
       const dt = new DataTransfer();
       uploadedFiles.forEach(f => dt.items.add(f));
       imageUpload.files = dt.files;
-      
       updateFilePreview();
     });
-    
+
     function updateFilePreview() {
       filePreview.innerHTML = '';
       uploadedFiles.forEach((file, index) => {
@@ -1036,7 +988,7 @@
         filePreview.appendChild(preview);
       });
     }
-    
+
     window.removeFile = function(index) {
       uploadedFiles.splice(index, 1);
       const dt = new DataTransfer();
@@ -1044,16 +996,44 @@
       imageUpload.files = dt.files;
       updateFilePreview();
     };
-    
+
+    // =====================================================
+    // GESTION DYNAMIQUE : si Dimanche est choisi, désactiver le bouton "Matin"
+    // =====================================================
+    const daySelect = document.getElementById('preferredDay');
+    const radioMatin = document.querySelector('input[type="radio"][value="Matin (8h-12h)"]');
+    const radioSoir = document.querySelector('input[type="radio"][value="Soir (17h-19h)"]');
+    const radioGroup = document.getElementById('timeRadioGroup');
+
+    function updateRadioForSunday() {
+      if (daySelect.value === 'Dimanche') {
+        // Désactiver l'option matin et la décocher si elle était sélectionnée
+        radioMatin.disabled = true;
+        if (radioMatin.checked) radioMatin.checked = false;
+        // Option soir reste active
+        radioSoir.disabled = false;
+        // Ajouter un visuel (optionnel)
+        radioGroup.classList.add('disabled-radio');
+      } else {
+        radioMatin.disabled = false;
+        radioSoir.disabled = false;
+        radioGroup.classList.remove('disabled-radio');
+      }
+    }
+
+    daySelect.addEventListener('change', updateRadioForSunday);
+    // Exécuter au chargement au cas où une valeur serait pré-sélectionnée
+    updateRadioForSunday();
+
     // =====================================================
     // VALIDATION FORMULAIRE
     // =====================================================
-    
     function validateForm() {
       let isValid = true;
       document.querySelectorAll('.error-message').forEach(el => el.classList.remove('show'));
       document.querySelectorAll('input, select').forEach(el => el.classList.remove('error'));
-      
+
+      // Champs texte
       const requiredFields = [
         { id: 'firstName', errorId: 'firstNameError' },
         { id: 'lastName', errorId: 'lastNameError' },
@@ -1061,10 +1041,9 @@
         { id: 'email', errorId: 'emailError' },
         { id: 'address', errorId: 'addressError' },
         { id: 'service', errorId: 'serviceError' },
-        { id: 'preferredDay', errorId: 'dayError' },
-        { id: 'preferredTime', errorId: 'timeError' }
+        { id: 'preferredDay', errorId: 'dayError' }
       ];
-      
+
       requiredFields.forEach(field => {
         const input = document.getElementById(field.id);
         if (!input.value.trim()) {
@@ -1073,8 +1052,8 @@
           isValid = false;
         }
       });
-      
-      // Email validation
+
+      // Validation email
       const email = document.getElementById('email');
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (email.value && !emailRegex.test(email.value)) {
@@ -1083,35 +1062,32 @@
         document.getElementById('emailError').classList.add('show');
         isValid = false;
       }
-      
-      // Time validation (basic)
-      const time = document.getElementById('preferredTime');
-      if (time.value && !time.value.match(/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/)) {
-        time.classList.add('error');
-        document.getElementById('timeError').textContent = 'Format invalide (ex: 09:30)';
+
+      // Validation radio time
+      const timeSelected = document.querySelector('input[name="timeSlot"]:checked');
+      if (!timeSelected) {
         document.getElementById('timeError').classList.add('show');
         isValid = false;
       }
-      
+
       return isValid;
     }
-    
+
     // =====================================================
     // ENVOI VERS GMAIL
     // =====================================================
-    
     document.getElementById('bookingForm').addEventListener('submit', async function(e) {
       e.preventDefault();
-      
+
       if (!validateForm()) return;
-      
+
       const submitBtn = document.getElementById('submitBtn');
       const originalHTML = submitBtn.innerHTML;
-      
+
       try {
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Préparation...';
         submitBtn.disabled = true;
-        
+
         // Récupération valeurs
         const firstName = document.getElementById('firstName').value.trim();
         const lastName = document.getElementById('lastName').value.trim();
@@ -1120,16 +1096,16 @@
         const address = document.getElementById('address').value.trim();
         const service = document.getElementById('service').value;
         const preferredDay = document.getElementById('preferredDay').value;
-        const preferredTime = document.getElementById('preferredTime').value.trim();
+        const timeSlot = document.querySelector('input[name="timeSlot"]:checked').value; // Matin ou Soir
         const comments = document.getElementById('comments').value.trim() || 'aucun commentaire';
-        
+
         // Référence unique
         const ref = 'RDV-' + new Date().getFullYear() + '-' + 
                     Math.floor(Math.random() * 10000).toString().padStart(4, '0');
-        
+
         // Construction sujet et corps
-        const subject = `Rendez-vous ${ref} - ${firstName} ${lastName} - ${preferredDay} à ${preferredTime}`;
-        
+        const subject = `Rendez-vous ${ref} - ${firstName} ${lastName} - ${preferredDay} ${timeSlot}`;
+
         let body = `NOUVELLE DEMANDE DE RENDEZ-VOUS\n`;
         body += `================================\n`;
         body += `Référence : ${ref}\n`;
@@ -1143,22 +1119,22 @@
         body += `📅 RENDEZ-VOUS SOUHAITÉ\n`;
         body += `Service : ${service}\n`;
         body += `Jour : ${preferredDay}\n`;
-        body += `Heure : ${preferredTime}\n\n`;
+        body += `Horaire : ${timeSlot}\n\n`;
         body += `📝 COMMENTAIRES\n${comments}\n\n`;
         body += `📸 PHOTOS : ${uploadedFiles.length} fichier(s) joint (envoyés manuellement si besoin)\n\n`;
         body += `================================\n`;
         body += `Message généré automatiquement – merci de répondre au client.`;
-        
+
         // Création du lien mailto
         const mailtoLink = `mailto:${CONFIG.recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}${CONFIG.bccEmail ? '&bcc='+encodeURIComponent(CONFIG.bccEmail) : ''}`;
-        
+
         // Ouvrir le client mail
         window.location.href = mailtoLink;
-        
+
         // Feedback succès
         submitBtn.innerHTML = '<i class="fas fa-check"></i> Demande prête !';
         submitBtn.style.background = '#28a745';
-        
+
         // Réinitialisation
         setTimeout(() => {
           document.getElementById('bookingForm').reset();
@@ -1167,8 +1143,9 @@
           submitBtn.innerHTML = originalHTML;
           submitBtn.style.background = '';
           submitBtn.disabled = false;
+          updateRadioForSunday(); // remettre l'état radio par défaut
         }, 4000);
-        
+
       } catch (error) {
         console.error(error);
         alert('Erreur technique. Veuillez réessayer.');
@@ -1176,25 +1153,6 @@
         submitBtn.disabled = false;
       }
     });
-    
-    // =====================================================
-    // INSTRUCTIONS POUR LE CLIENT
-    // =====================================================
-    /*
-      ✅ IMAGE log1.jpg AJOUTÉE en haut de la page
-      ✅ JOURS DISPONIBLES : Lundi, Mercredi, Jeudi, Vendredi, Dimanche
-      ✅ HORAIRES : 8h-12h et 14h-19h pour chaque jour
-      ✅ CHAMP HEURE AJOUTÉ avec sélecteur horaire
-      ✅ Formulaire entièrement responsive et mobile-friendly
-      
-      Pour modifier les jours : ligne ~390-470 (day-schedule-card)
-      Pour modifier les horaires : modifier les textes dans time-slots
-    */
   </script>
 </body>
 </html>
-
-
-
-
-
