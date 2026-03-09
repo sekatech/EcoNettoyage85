@@ -781,6 +781,8 @@
 <option value="Jeudi Soir">Jeudi Soir</option>
 <option value="Vendredi Matin">Vendredi Matin</option>
 <option value="Vendredi Soir">Vendredi Soir</option>
+<option value="Vendredi Matin">Samedi Matin</option>
+<option value="Vendredi Soir">Samedi Soir</option>
 <option value="Dimanche Soir">Dimanche Soir</option>
                 </select>
                 <div class="error-message" id="dayError">Veuillez choisir un jour</div>
@@ -861,6 +863,13 @@
               <!-- VENDREDI : matin + soir -->
               <div class="day-schedule-card">
                 <div class="day-name"><i class="fas fa-glass-cheers"></i> Vendredi</div>
+                <div class="time-slots">
+                  <div class="time-slot"><i class="fas fa-clock"></i><span>Matin</span></div>
+                  <div class="time-slot"><i class="fas fa-clock"></i><span>Soir</span></div>
+                </div>
+                <!-- Samedi : matin + soir -->
+              <div class="day-schedule-card">
+                <div class="day-name"><i class="fas fa-glass-cheers"></i> Samedi</div>
                 <div class="time-slots">
                   <div class="time-slot"><i class="fas fa-clock"></i><span>Matin</span></div>
                   <div class="time-slot"><i class="fas fa-clock"></i><span>Soir</span></div>
@@ -1089,5 +1098,6 @@
   </script>
 </body>
 </html>
+
 
 
